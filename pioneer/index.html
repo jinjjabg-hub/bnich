@@ -2,27 +2,1366 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-title" content="BNI 파이오니어">
+<meta name="theme-color" content="#162311">
 <title>BNI 파이오니어 챕터 | 부산 비즈니스 모임</title>
-<!-- 이 페이지는 기존 파이오니어 비즈홈으로 자동 이동합니다. 이동할 주소를 바꾸려면 아래 3곳(canonical, refresh, TARGET)을 함께 수정하세요. -->
-<link rel="canonical" href="https://jinjjabg-hub.github.io/BNI-PIONEER-cards/pioneer/">
-<meta http-equiv="refresh" content="0; url=https://jinjjabg-hub.github.io/BNI-PIONEER-cards/pioneer/">
-<meta name="description" content="친목이 아닌 비즈니스로. 업종별 1명, 매주 수요일 오전 6시 30분. 참관 신청 받습니다.">
 <meta property="og:title" content="BNI 파이오니어 챕터 | 부산 비즈니스 모임">
 <meta property="og:description" content="친목이 아닌 비즈니스로. 업종별 1명, 매주 수요일 오전 6시 30분. 참관 신청 받습니다.">
-<meta property="og:image" content="https://jinjjabg-hub.github.io/BNI-PIONEER-cards/pioneer/og-logo.png">
+<meta property="og:image" content="https://bnich.bizmy.net/pioneer/og-logo.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://bnich.bizmy.net/pioneer/">
-<script>
-  var TARGET = 'https://jinjjabg-hub.github.io/BNI-PIONEER-cards/pioneer/';
-  location.replace(TARGET + location.search + location.hash);
-</script>
-<style>body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;background:#f5f5f7;color:#555;text-align:center;padding:80px 20px}a{color:#cf2030;font-weight:600}</style>
+<link rel="preload" href="../fonts/Paperlogy-4Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/Paperlogy-7Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<!-- 언어팩에 따라 폰트 추가: references/languages.md 참고 -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+<style>
+
+@font-face { font-family: 'Paperlogy'; src: url('../fonts/Paperlogy-4Regular.woff2') format('woff2'); font-weight: 100 500; font-display: swap; }
+@font-face { font-family: 'Paperlogy'; src: url('../fonts/Paperlogy-7Bold.woff2') format('woff2'); font-weight: 600 900; font-display: swap; }
+
+:root {
+  --navy: #162311;
+  --navy2: #1d2d17;
+  --navy3: #26391f;
+  --gold: #BA0001;
+  --gold2: #d81a1b;
+  --sage: #E8ECD1;
+  --light: #E8ECD1;
+  --text-dark: #E8ECD1;
+  --text-light: #162311;
+  --muted-dark: #a7ae93;
+  --muted-light: #4d5a40;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color: transparent; }
+html { font-size: 16px; }
+body {
+  font-family: 'Paperlogy', 'Noto Sans KR', sans-serif;
+  background: var(--navy);
+  color: var(--text-dark);
+  max-width: 480px;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+[data-lang="jp"] { font-family: 'Noto Sans JP', sans-serif; }
+[data-lang="cn"] { font-family: 'Noto Sans SC', sans-serif; }
+[data-lang="si"] { font-family: 'Noto Sans Sinhala', sans-serif; }
+[data-lang="ur"] { font-family: 'Noto Nastaliq Urdu', serif; direction: rtl; }
+[data-lang] { display: none; }
+[data-lang].active { display: block; }
+span[data-lang].active { display: inline; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:100;
+  max-width: 480px; margin: 0 auto;
+  background: rgba(22,35,17,0.97);
+  backdrop-filter: blur(10px);
+  padding: 10px 16px;
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 1px solid rgba(232,236,209,0.25);
+}
+.nav-brand { font-size: 12px; font-weight: 700; color: var(--sage); white-space: nowrap; }
+.lang-btns { display:flex; gap:4px; }
+.lang-btn {
+  padding: 5px 8px;
+  border: 1px solid rgba(232,236,209,0.35);
+  background: transparent;
+  color: var(--muted-dark);
+  font-size: 10px; font-weight: 700;
+  cursor: pointer; border-radius: 5px;
+  transition: all 0.2s;
+  min-width: 40px; min-height: 32px;
+  display: flex; align-items:center; justify-content:center;
+  font-family: 'Paperlogy', 'Noto Sans KR', sans-serif;
+}
+.lang-btn.active { background: var(--gold); color: #fff; border-color: var(--gold); }
+
+/* ── HERO ── */
+.hero { margin-top: 54px; width: 100%; }
+.hero img.hero-img { width: 100%; height: auto; display: block; }
+.hero-content { background: var(--navy); padding: 22px 20px 24px; }
+.hero-badge {
+  display: inline-block;
+  background: var(--gold);
+  color: #fff;
+  font-size: 10px; font-weight: 700;
+  padding: 4px 12px; border-radius: 20px;
+  margin-bottom: 10px; letter-spacing: 1.5px;
+}
+.hero-name {
+  font-size: 34px; font-weight: 700;
+  color: #fff; line-height: 1.15;
+  margin-bottom: 7px; letter-spacing: -0.5px;
+}
+.hero-title { font-size: 13px; color: var(--sage); opacity: 0.95; line-height: 1.5; }
+.hero-name [data-lang="jp"] { font-size: 27px; }
+
+/* ── PROFILE ROW ── */
+.profile-row {
+  background: var(--navy2);
+  padding: 16px 20px;
+  display: flex; align-items: center; gap:14px;
+  border-bottom: 1px solid rgba(232,236,209,0.12);
+}
+.profile-img {
+  width: 64px; height: 64px; min-width:64px;
+  border-radius: 50%;
+  border: 2px solid var(--sage);
+  overflow: hidden; flex-shrink: 0;
+}
+.profile-img img { width:100%; height:100%; object-fit:cover; object-position: center top; }
+.profile-info h2 { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.profile-info p { font-size: 12px; color: var(--muted-dark); line-height: 1.5; }
+
+/* ── 공통 섹션 ── */
+section { padding: 40px 20px; }
+.section-label {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--sage); margin-bottom: 6px;
+}
+.section-title { font-size: 22px; font-weight: 700; line-height: 1.35; margin-bottom: 22px; }
+
+/* ── ABOUT ── */
+.about { background: var(--navy); }
+.about .section-title { color: #fff; }
+.slogan {
+  font-size: 15px; font-weight: 700;
+  color: var(--sage); margin-bottom: 14px;
+  font-style: italic; line-height: 1.6;
+}
+.about-text { font-size: 14px; line-height: 1.9; color: var(--text-dark); opacity: 0.85; }
+.about-text [data-lang="ur"] { font-size: 15px; line-height: 2.2; }
+
+/* ── WHY ── */
+.why { background: var(--light); }
+.why .section-label { color: var(--muted-light); }
+.why .section-title { color: var(--text-light); }
+.why-cards { display: flex; flex-direction: column; gap:14px; }
+.why-card {
+  background: #fff;
+  border: 1px solid rgba(232,236,209,0.18);
+  border-left: 4px solid var(--gold);
+  border-radius: 10px; padding: 18px 16px;
+}
+.why-card h3 { font-size: 15px; font-weight: 700; color: var(--text-light); margin-bottom: 8px; line-height: 1.4; }
+.why-card p { font-size: 13px; line-height: 1.85; color: #444; }
+.why-card p [data-lang="ur"] { font-size: 14px; line-height: 2.2; }
+.why-card p strong { color: var(--navy); font-weight: 700; }
+
+/* ── DIFFERENCE ── */
+.difference { background: var(--navy2); }
+.difference .section-title { color: #fff; }
+.diff-grid { display: flex; flex-direction: column; gap:12px; }
+.diff-card {
+  background: var(--navy3);
+  border: 1px solid rgba(232,236,209,0.12);
+  border-radius: 10px; padding: 18px 16px;
+}
+.diff-card h3 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.4; }
+.diff-card p { font-size: 13px; line-height: 1.8; color: var(--text-dark); opacity: 0.8; }
+.diff-card p [data-lang="ur"] { font-size: 14px; line-height: 2.2; }
+
+/* ── REFERRAL ── */
+.referral { background: var(--light); }
+.referral .section-label { color: var(--muted-light); }
+.referral .section-title { color: var(--text-light); }
+.ref-list { display: flex; flex-direction: column; gap:10px; }
+.ref-item {
+  display: flex; gap:12px; align-items:flex-start;
+  background: #fff; border-radius: 10px;
+  padding: 15px 14px; border: 1px solid rgba(0,0,0,0.05);
+}
+.ref-num {
+  width: 26px; height: 26px; min-width:26px;
+  border-radius: 50%; background: var(--gold);
+  color: #fff; font-weight: 700; font-size: 12px;
+  display: flex; align-items:center; justify-content:center;
+  flex-shrink: 0; margin-top: 1px;
+}
+.ref-item p { font-size: 13px; line-height: 1.8; color: #333; }
+.ref-item p [data-lang="ur"] { font-size: 14px; line-height: 2.2; }
+
+/* ── CAREER ── */
+.career {
+  position: relative;
+  background-color: var(--light);
+  background-size: 150%;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+}
+.career .section-label { position: relative; z-index:1; color: var(--muted-light); }
+.career .section-title { color: var(--text-light); position: relative; z-index:1; }
+.career-list { display: flex; flex-direction: column; gap:18px; position: relative; z-index:1; }
+.career-item {
+  display: flex; gap:12px; align-items:flex-start;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.career-item:last-child { border-bottom: none; padding-bottom: 0; }
+.career-badge {
+  background: var(--navy); color: #fff;
+  font-size: 10px; font-weight: 700;
+  padding: 4px 10px; border-radius: 4px;
+  white-space: nowrap; flex-shrink: 0; margin-top: 2px;
+}
+.career-content { background: rgba(255,255,255,0.82); border-radius: 8px; padding: 12px 14px; flex:1; }
+.career-item h3 { font-size: 14px; font-weight: 700; color: var(--text-light); margin-bottom: 7px; line-height: 1.4; }
+.career-item p { font-size: 12px; line-height: 1.85; color: #555; }
+
+/* ── PORTFOLIO (선택 섹션 — portfolio1.jpg 이상 있을 때만 사용) ── */
+.portfolio { background: var(--navy); }
+.portfolio .section-title { color: #fff; }
+.portfolio-track-wrap { overflow: hidden; border-radius: 12px; }
+.portfolio-track { display: flex; transition: transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94); }
+.portfolio-slide { min-width: 100%; aspect-ratio: 1/1; overflow: hidden; }
+.portfolio-slide img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
+.portfolio-nav { display:flex; align-items:center; justify-content:center; gap:16px; margin-top:14px; }
+.portfolio-btn {
+  background: transparent; border: 1px solid rgba(232,236,209,0.35);
+  color: var(--sage); width: 30px; height: 30px; border-radius: 50%;
+  font-size: 15px; cursor: pointer; display:flex; align-items:center; justify-content:center;
+}
+.portfolio-dots { display:flex; gap:6px; }
+.portfolio-dot { width:6px; height:6px; border-radius:50%; background: rgba(232,236,209,0.3); transition: all 0.25s; }
+.portfolio-dot.active { background: var(--sage); width:18px; border-radius:3px; }
+
+/* ── CONTACT ── */
+.contact { background: var(--light); }
+.contact .section-label { color: var(--muted-light); }
+.contact .section-title { color: var(--text-light); }
+.contact-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.contact-item {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 8px; text-align: center;
+  background: #fff; border-radius: 12px;
+  padding: 16px 10px; border: 1px solid rgba(0,0,0,0.05);
+  text-decoration: none; min-height: 100px;
+}
+.contact-item:active { transform: scale(0.97); }
+.contact-icon {
+  width: 42px; height: 42px; min-width:42px;
+  border-radius: 50%; background: var(--navy);
+  display: flex; align-items:center; justify-content:center;
+  font-size: 18px; flex-shrink: 0;
+}
+.contact-label { font-size: 10px; color: #999; }
+.contact-value { font-size: 12px; font-weight: 600; color: var(--text-light); line-height: 1.4; word-break: break-all; }
+
+/* ── ACTION ── */
+.action { background: var(--navy2); padding: 32px 20px; }
+.btn-group { display: flex; flex-direction: column; gap:12px; }
+.btn {
+  display: block; width: 100%; padding: 17px 16px;
+  border: none; border-radius: 10px;
+  font-size: 15px; font-weight: 700;
+  cursor: pointer; text-align: center;
+  transition: all 0.15s; font-family: 'Paperlogy', 'Noto Sans KR', sans-serif;
+  min-height: 54px; letter-spacing: 0.3px;
+}
+.btn-primary { background: var(--gold); color: #fff; }
+.btn-secondary { background: transparent; border: 2px solid var(--sage); color: var(--sage); }
+.btn-share { background: linear-gradient(135deg, #1a6b3a, #0d8a4a); color: #fff; border: none; }
+.btn:active { transform: scale(0.97); opacity: 0.9; }
+
+/* 공유 바텀시트 */
+.share-sheet { display:none; position:fixed; inset:0; z-index:200; }
+.share-backdrop { position:absolute; inset:0; background:rgba(0,0,0,0.5); }
+.share-panel {
+  position:absolute; bottom:0; left:0; right:0;
+  max-width:480px; margin:0 auto;
+  background:#fff; border-radius:20px 20px 0 0;
+  padding:20px 20px 40px;
+}
+.share-handle { width:40px; height:4px; background:#ddd; border-radius:2px; margin:0 auto 18px; }
+.share-title { font-size:13px; color:#999; text-align:center; margin-bottom:20px; font-weight:600; }
+.share-btns { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:16px; }
+.share-btn { display:flex; flex-direction:column; align-items:center; gap:8px; background:none; border:none; cursor:pointer; padding:8px 4px; }
+.share-btn-icon { width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:26px; }
+.share-btn span { font-size:11px; color:#333; font-weight:600; font-family: 'Paperlogy', 'Noto Sans KR', sans-serif; }
+.share-cancel { width:100%; padding:14px; background:#f2f2f2; border:none; border-radius:10px; font-size:15px; font-weight:700; color:#444; cursor:pointer; font-family: 'Paperlogy', 'Noto Sans KR', sans-serif; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--navy); padding: 24px 20px;
+  text-align: center; border-top: 1px solid rgba(232,236,209,0.12);
+}
+footer .company { font-size: 13px; font-weight: 700; color: var(--sage); margin-bottom: 5px; }
+footer .slogan-footer { font-size: 11px; color: var(--muted-dark); letter-spacing: 0.5px; }
+
+/* ── 챕터 비즈홈 추가 섹션 (갤러리 빈칸 · 멤버 · 참관 신청) ── */
+.portfolio-empty { aspect-ratio: 4/3; border: 1px dashed rgba(232,236,209,0.4); border-radius: 12px; display:flex; align-items:center; justify-content:center; color: var(--muted-dark); font-size: 13px; text-align:center; line-height:1.7; }
+.difference .vs { font-size: 12px; color: var(--muted-dark); margin-bottom: 6px; text-decoration: line-through; opacity: .8; }
+.members { background: var(--light); }
+.members .section-label { color: var(--muted-light); }
+.members .section-title { color: var(--text-light); margin-bottom: 8px; }
+.members .sub { font-size: 12px; color: #777; margin-bottom: 16px; line-height: 1.6; }
+.member-list { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.member-item { display:flex; flex-direction:column; align-items:flex-start; justify-content:space-between; gap:8px; min-height:84px; background:#fff; border-radius:12px; padding:12px; border:1px solid rgba(0,0,0,0.05); text-decoration:none; }
+.member-item:active { transform: scale(0.97); }
+.member-name { font-size: 13px; line-height: 1.4; font-weight: 700; color: var(--text-light); }
+.member-co { font-size: 11px; color: #777; line-height: 1.4; }
+.member-links { display:flex; gap:4px; flex-shrink:0; }
+.member-links span { font-size: 11px; font-weight: 700; padding: 5px 10px; white-space: nowrap; border-radius: 12px; text-decoration:none; }
+.ml-home { background: var(--gold); color: #fff; box-shadow: 0 2px 8px rgba(186,0,1,0.3); }
+.ml-card { background: transparent; color: var(--muted-light); border: 1px solid rgba(22,35,17,0.25); }
+.card-pop { display:none; position:fixed; inset:0; z-index:300; background:rgba(10,16,8,0.88); align-items:center; justify-content:center; padding:16px; }
+.card-pop.on { display:flex; }
+.card-pop-box { width:100%; max-width:440px; display:flex; flex-direction:column; gap:12px; }
+.card-pop-box img { width:100%; max-height:72vh; object-fit:contain; border-radius:10px; background:#fff; }
+.card-pop-btns { display:flex; gap:10px; }
+.card-pop-btns .btn { flex:1; min-height:48px; padding:13px; text-decoration:none; display:flex; align-items:center; justify-content:center; }
+.member-more { margin-top: 14px; font-size: 12px; color: #666; line-height: 1.9; background:#fff; border-radius:12px; padding:14px; }
+.member-more b { display:block; font-size: 11px; color: var(--muted-light); margin-bottom: 4px; letter-spacing: 1px; }
+.visit { background: var(--navy2); }
+.visit .section-title { color: #fff; margin-bottom: 14px; }
+.visit-info { list-style:none; margin-bottom: 18px; }
+.visit-info li { font-size: 13px; line-height: 1.7; padding: 8px 0; border-bottom: 1px solid rgba(232,236,209,0.12); color: var(--text-dark); }
+.visit-info li b { color: #fff; }
+.vform { background: var(--navy3); border: 1px solid rgba(232,236,209,0.2); border-radius: 12px; padding: 18px 16px; }
+.vfg { margin-bottom: 12px; }
+.vfg label { display:block; font-size: 12px; font-weight: 700; color: var(--sage); margin-bottom: 5px; }
+.vfg input, .vfg select { width:100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(232,236,209,0.25); background: var(--navy); color: #fff; font-size: 15px; font-family: 'Paperlogy', 'Noto Sans KR', sans-serif; }
+.vfg input::placeholder { color: rgba(240,236,224,0.35); }
+.vrate { display:flex; flex-wrap:wrap; gap:6px 12px; font-size: 13px; color: var(--text-dark); padding-top: 2px; }
+.vrate label { display:flex; align-items:center; gap:4px; font-weight:400; color: var(--text-dark); margin:0; font-size:13px; }
+.vrate input { width:auto; accent-color: var(--gold); }
+.vagree { display:flex; gap:8px; align-items:flex-start; font-size: 11.5px; color: var(--muted-dark); line-height: 1.6; margin: 4px 0 14px; }
+.vmsg { display:none; padding: 12px; border-radius: 8px; font-size: 13px; font-weight: 700; margin-bottom: 12px; text-align:center; }
+.vmsg.ok { display:block; background:#e3f4e8; color:#1d6b35; }
+.vmsg.err { display:block; background:#fbe4e6; color:#8f1424; }
+.vpay { margin-top: 14px; padding-top: 14px; border-top: 1px dashed rgba(232,236,209,0.25); display:flex; flex-direction:column; gap:10px; }
+.vpay-info { font-size: 12px; color: var(--muted-dark); line-height: 1.7; }
+.vpay-info b { display:block; font-size: 17px; color: #fff; letter-spacing: 0.5px; margin-top: 2px; }
+.vpay-info small { font-size: 12px; }
+</style>
 </head>
 <body>
-  <p>BNI 파이오니어 챕터 페이지로 이동 중입니다…</p>
-  <p><a href="https://jinjjabg-hub.github.io/BNI-PIONEER-cards/pioneer/">바로 가기</a></p>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">BNI PIONEER</div>
+  <div class="lang-btns">
+    <button class="lang-btn active" onclick="setLang('kr')">한국어</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('jp')">日本語</button>
+    <button class="lang-btn" onclick="setLang('cn')">中文</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <img class="hero-img" src="hero.jpg" alt="BNI 비즈니스 네트워크 초대 · 파이오니어 챕터">
+</div>
+<div class="hero-content">
+  <div class="hero-badge">BUSAN 1호 PIONEER</div>
+  <div class="hero-name">
+    <span data-lang="kr" class="active">파이오니어 챕터</span>
+    <span data-lang="en">Pioneer Chapter</span>
+    <span data-lang="jp">パイオニア・チャプター</span>
+    <span data-lang="cn">先锋分会</span>
+  </div>
+  <div class="hero-title">
+    <span data-lang="kr" class="active">업종별 1명 · 2022년 런칭</span>
+    <span data-lang="en">One member per profession · Launched 2022</span>
+    <span data-lang="jp">1業種1名 · 2022年発足</span>
+    <span data-lang="cn">每个行业仅限1人 · 2022年成立</span>
+  </div>
+</div>
+
+<!-- PROFILE ROW -->
+<div class="profile-row">
+  <div class="profile-img"><img src="profil.png?v=2" alt="BNI Pioneer"></div>
+  <div class="profile-info">
+    <h2>BNI Pioneer Chapter</h2>
+    <p>
+      <span data-lang="kr" class="active">리퍼럴 · 1:1 미팅 · 파워팀 · Givers Gain®</span>
+      <span data-lang="en">Referrals · 1-to-1s · Power Teams · Givers Gain®</span>
+      <span data-lang="jp">リファーラル · 1対1ミーティング · パワーチーム · Givers Gain®</span>
+      <span data-lang="cn">推荐 · 一对一会谈 · 强力团队 · Givers Gain®</span>
+    </p>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="section-label">About</div>
+  <div class="slogan">
+    <span data-lang="kr" class="active">"감이 아닌 시스템으로, 친목이 아닌 비즈니스로."</span>
+    <span data-lang="en">"Systems, not guesswork. Business, not just socializing."</span>
+    <span data-lang="jp">「勘ではなくシステムで。親睦ではなくビジネスで。」</span>
+    <span data-lang="cn">"靠系统，不靠感觉；为生意，不为应酬。"</span>
+  </div>
+  <p class="about-text">
+    <span data-lang="kr" class="active">BNI 파이오니어 챕터는 부산의 사업자들이 업종별로 한 명씩 모여, 매주 서로의 고객을 소개하며 함께 매출을 키우는 비즈니스 네트워킹 모임입니다. 2022년 11월 런칭해 지금 9기를 운영하고 있습니다.</span>
+    <span data-lang="en">BNI Pioneer Chapter is a business networking group in Busan where one business owner per profession meets every week to refer customers to each other and grow sales together. Launched in November 2022, the chapter is now in its 9th term.</span>
+    <span data-lang="jp">BNIパイオニア・チャプターは、釜山の事業者が1業種につき1名ずつ集まり、毎週お互いのお客様を紹介し合いながら共に売上を伸ばすビジネス・ネットワーキングの会です。2022年11月に発足し、現在は第9期を運営しています。</span>
+    <span data-lang="cn">BNI先锋分会是釜山的商业社交团体，每个行业只吸纳一位企业主，成员每周聚会、互相推荐客户，共同提升业绩。分会于2022年11月成立，目前正处于第9期。</span>
+  </p>
+</section>
+
+<!-- WHY : 왜 BNI를 해야 하는가 -->
+<section class="why">
+  <div class="section-label">Why BNI</div>
+  <div class="section-title">
+    <span data-lang="kr" class="active">왜 BNI를 해야 할까요?</span>
+    <span data-lang="en">Why BNI?</span>
+    <span data-lang="jp">なぜBNIなのか？</span>
+    <span data-lang="cn">为什么选择BNI？</span>
+  </div>
+  <div class="why-cards">
+    <div class="why-card">
+      <h3>
+        <span data-lang="kr" class="active">① 나 대신 영업하는 멤버들</span>
+        <span data-lang="en">① Members who sell for you</span>
+        <span data-lang="jp">① あなたの代わりに営業してくれる仲間</span>
+        <span data-lang="cn">① 替你推销的伙伴们</span>
+      </h3>
+      <p>
+        <span data-lang="kr" class="active">지인 영업은 언젠가 바닥이 납니다. 멤버들이 <strong>매주</strong> 내 사업 소개를 듣고, 자기 고객 중 나에게 맞는 사람을 <strong>구체적으로 설명해</strong> 소개합니다. 명함 한 장 건네는 소개와 계약률이 다릅니다.</span>
+        <span data-lang="en">Selling through friends and acquaintances eventually runs dry. Members hear about your business <strong>every week</strong>, then refer the right people from their own customers <strong>with a clear explanation</strong> of what you do. That closes far better than simply passing on a business card.</span>
+        <span data-lang="jp">知人頼みの営業はいずれ限界が来ます。メンバーが<strong>毎週</strong>あなたの事業紹介を聞き、自分のお客様の中からあなたに合う人を<strong>具体的に説明して</strong>紹介します。名刺を1枚渡すだけの紹介とは成約率が違います。</span>
+        <span data-lang="cn">靠熟人做生意，迟早会走到尽头。成员们<strong>每周</strong>听你介绍业务，再从自己的客户中挑出适合你的人，<strong>具体说明</strong>后推荐给你。这和只递一张名片的介绍相比，成交率完全不同。</span>
+      </p>
+    </div>
+    <div class="why-card">
+      <h3>
+        <span data-lang="kr" class="active">② 신뢰가 먼저 쌓인 소개</span>
+        <span data-lang="en">② Referrals built on trust</span>
+        <span data-lang="jp">② 信頼が先にある紹介</span>
+        <span data-lang="cn">② 建立在信任之上的推荐</span>
+      </h3>
+      <p>
+        <span data-lang="kr" class="active"><strong>1:1 미팅</strong>으로 서로의 일과 사람을 깊이 알고 난 뒤에 소개합니다. 소개받는 고객도 "검증된 사람"을 만나게 됩니다.</span>
+        <span data-lang="en">Members get to know each other's work and character through <strong>1-to-1 meetings</strong> before making referrals. The customers being referred meet someone who has already been vetted.</span>
+        <span data-lang="jp"><strong>1対1ミーティング</strong>でお互いの仕事と人柄を深く知ってから紹介します。紹介されるお客様も「確かな人」に出会えます。</span>
+        <span data-lang="cn">成员先通过<strong>一对一会谈</strong>深入了解彼此的业务和为人，再进行推荐。被推荐的客户见到的也是"经过验证的人"。</span>
+      </p>
+    </div>
+    <div class="why-card">
+      <h3>
+        <span data-lang="kr" class="active">③ 40년 검증된 세계 최대 리퍼럴 조직</span>
+        <span data-lang="en">③ The world's largest referral organization, proven over 40 years</span>
+        <span data-lang="jp">③ 40年の実績、世界最大のリファーラル組織</span>
+        <span data-lang="cn">③ 经过40年验证的全球最大推荐组织</span>
+      </h3>
+      <p>
+        <span data-lang="kr" class="active"><strong>1985년</strong> 시작해 <strong>76개국 34만 명 이상</strong>이 활동합니다. 최근 12개월 동안 멤버들이 <strong>1,740만 건</strong>의 소개를 주고받아 <strong>37조 원 이상</strong>의 거래가 이루어졌습니다. 한국에서는 2008년 BNI 코리아가 설립되어 2012년부터 본격적으로 시작했고, <strong>2026년 10월 현재 98개 챕터</strong>에서 400여 개 전문 분야를 대표하는 <strong>3,375명</strong>이 활동하고 있습니다.</span>
+        <span data-lang="en">Founded in <strong>1985</strong>, BNI has <strong>over 340,000 members in 76 countries</strong>. In the last 12 months, members exchanged <strong>17.4 million referrals</strong>, generating <strong>over KRW 37 trillion</strong> in business. In Korea, BNI Korea was established in 2008 and began in earnest in 2012. <strong>As of October 2026, 3,375 members</strong> representing some 400 professions are active in <strong>98 chapters</strong>.</span>
+        <span data-lang="jp"><strong>1985年</strong>に始まり、<strong>76か国で34万人以上</strong>が活動しています。直近12か月でメンバー同士が<strong>1,740万件</strong>の紹介をやり取りし、<strong>37兆ウォン以上</strong>の取引が生まれました。韓国では2008年にBNIコリアが設立され、2012年から本格的に始動。<strong>2026年10月現在、98チャプター</strong>で約400の専門分野を代表する<strong>3,375名</strong>が活動しています。</span>
+        <span data-lang="cn">BNI始于<strong>1985年</strong>，在<strong>76个国家拥有34万多名成员</strong>。过去12个月，成员之间互相推荐<strong>1,740万次</strong>，促成<strong>超过37万亿韩元</strong>的交易。在韩国，BNI Korea于2008年成立，2012年起正式发展；<strong>截至2026年10月，98个分会</strong>中有代表约400个专业领域的<strong>3,375名成员</strong>活跃其中。</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENCE : 다른 사업자 모임과 무엇이 다른가 -->
+<section class="difference">
+  <div class="section-label">Difference</div>
+  <div class="section-title">
+    <span data-lang="kr" class="active">다른 사업자 모임과 무엇이 다른가요?</span>
+    <span data-lang="en">How is it different from other business groups?</span>
+    <span data-lang="jp">他の経営者の会と何が違うのか？</span>
+    <span data-lang="cn">与其他商会有何不同？</span>
+  </div>
+  <div class="diff-grid">
+    <div class="diff-card">
+      <div class="vs">
+        <span data-lang="kr" class="active">같은 업종 여럿이 서로 경쟁</span>
+        <span data-lang="en">Several people in the same trade competing</span>
+        <span data-lang="jp">同業者が何人もいて競合</span>
+        <span data-lang="cn">同行多人，互相竞争</span>
+      </div>
+      <h3>
+        <span data-lang="kr" class="active">업종별 1명 — 내 업종 소개는 나에게</span>
+        <span data-lang="en">One per profession — referrals in your field come to you</span>
+        <span data-lang="jp">1業種1名 — 自分の業種の紹介は自分に</span>
+        <span data-lang="cn">每行一人 — 本行业的推荐都归你</span>
+      </h3>
+      <p>
+        <span data-lang="kr" class="active">한 업종에 한 명만 가입할 수 있습니다. 챕터 안에서 내 업종 고객이 생기면 그 소개는 경쟁 없이 나에게 옵니다.</span>
+        <span data-lang="en">Only one person per profession can join. When a customer in your field comes up within the chapter, that referral comes to you with no competition.</span>
+        <span data-lang="jp">1つの業種に入会できるのは1名だけ。チャプター内で自分の業種のお客様が生まれたら、その紹介は競合なしで自分に届きます。</span>
+        <span data-lang="cn">每个行业只能有一人加入。分会内一旦出现你所在行业的客户，推荐就会直接给你，没有竞争。</span>
+      </p>
+    </div>
+    <div class="diff-card">
+      <div class="vs">
+        <span data-lang="kr" class="active">비정기 · 친목 · 술자리</span>
+        <span data-lang="en">Irregular · social · drinking</span>
+        <span data-lang="jp">不定期 · 親睦 · 飲み会</span>
+        <span data-lang="cn">不定期 · 联谊 · 酒局</span>
+      </div>
+      <h3>
+        <span data-lang="kr" class="active">매주 수요일 아침 6시 30분, 오직 비즈니스</span>
+        <span data-lang="en">Every Wednesday at 6:30 AM, business only</span>
+        <span data-lang="jp">毎週水曜の朝6時30分、ビジネスだけ</span>
+        <span data-lang="cn">每周三早上6点30分，只谈生意</span>
+      </h3>
+      <p>
+        <span data-lang="kr" class="active">위클리 프레젠테이션과 피처 발표로 "언제 누구를 소개해야 하는지"를 매주 배웁니다. 그래서 막연한 소개가 아니라 맞는 소개가 나옵니다.</span>
+        <span data-lang="en">Through weekly presentations and feature presentations, members learn every week "who to refer, and when." That's why referrals are on target, not vague.</span>
+        <span data-lang="jp">ウィークリー・プレゼンテーションとフィーチャー発表で「いつ、誰を紹介すべきか」を毎週学びます。だから漠然とした紹介ではなく、的確な紹介が生まれます。</span>
+        <span data-lang="cn">通过每周简报和专题演讲，成员每周都在学习"什么时候该推荐谁"。所以推荐不再笼统，而是精准到位。</span>
+      </p>
+    </div>
+    <div class="diff-card">
+      <div class="vs">
+        <span data-lang="kr" class="active">"도움이 된 것 같다"</span>
+        <span data-lang="en">"I think it helped"</span>
+        <span data-lang="jp">「役に立った気がする」</span>
+        <span data-lang="cn">"好像有点帮助"</span>
+      </div>
+      <h3>
+        <span data-lang="kr" class="active">성과를 숫자로 확인</span>
+        <span data-lang="en">Results you can measure</span>
+        <span data-lang="jp">成果を数字で確認</span>
+        <span data-lang="cn">用数字确认成果</span>
+      </h3>
+      <p>
+        <span data-lang="kr" class="active">출석·1:1 미팅·리퍼럴·성사 금액을 PALMS로 기록합니다. 같은 고객을 만나는 업종끼리는 파워팀을 이뤄 함께 매출을 냅니다. 예: 이사 → 청소 → 에어컨 설치 → 에어컨 청소.</span>
+        <span data-lang="en">Attendance, 1-to-1s, referrals and closed business are tracked in PALMS. Professions that serve the same customers form Power Teams and win business together. Example: moving → cleaning → A/C installation → A/C cleaning.</span>
+        <span data-lang="jp">出席・1対1ミーティング・リファーラル・成約額をPALMSで記録します。同じお客様に出会う業種同士はパワーチームを組み、共に売上を生みます。例：引っ越し → 清掃 → エアコン設置 → エアコン清掃。</span>
+        <span data-lang="cn">出勤、一对一会谈、推荐和成交金额都记录在PALMS中。服务同一类客户的行业组成强力团队，共同创造业绩。例如：搬家 → 保洁 → 空调安装 → 空调清洗。</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- REFERRAL : 어떤 분이 하면 좋은가 -->
+<section class="referral">
+  <div class="section-label">Who</div>
+  <div class="section-title">
+    <span data-lang="kr" class="active">이런 분께 추천합니다</span>
+    <span data-lang="en">Who it's for</span>
+    <span data-lang="jp">こんな方におすすめです</span>
+    <span data-lang="cn">推荐给这样的人</span>
+  </div>
+  <div class="ref-list">
+    <div class="ref-item">
+      <div class="ref-num">1</div>
+      <p>
+        <span data-lang="kr" class="active">지인 영업이 한계에 닿아 새 고객 줄기가 필요한 사업자</span>
+        <span data-lang="en">Business owners who have outgrown selling to friends and need a new source of customers</span>
+        <span data-lang="jp">知人営業が限界に達し、新しい顧客の流れが必要な事業者</span>
+        <span data-lang="cn">熟人生意已到瓶颈、需要新客源的企业主</span>
+      </p>
+    </div>
+    <div class="ref-item">
+      <div class="ref-num">2</div>
+      <p>
+        <span data-lang="kr" class="active">소개로 일이 들어오는 업종 — 인테리어·시공, 세무·법무, 보험, 컨설팅, 기업 대상 서비스 등</span>
+        <span data-lang="en">Professions that win work through referrals — interiors and construction, tax and legal, insurance, consulting, B2B services and more</span>
+        <span data-lang="jp">紹介で仕事が入る業種 — インテリア・施工、税務・法務、保険、コンサルティング、法人向けサービスなど</span>
+        <span data-lang="cn">靠推荐接单的行业 — 室内装修与施工、税务与法务、保险、咨询、企业服务等</span>
+      </p>
+    </div>
+    <div class="ref-item">
+      <div class="ref-num">3</div>
+      <p>
+        <span data-lang="kr" class="active">부산에서 다른 업종 전문가들과 신뢰를 쌓고 협업하고 싶은 대표님</span>
+        <span data-lang="en">Business owners in Busan who want to build trust and collaborate with experts in other fields</span>
+        <span data-lang="jp">釜山で他業種の専門家と信頼を築き、協業したい経営者</span>
+        <span data-lang="cn">希望在釜山与其他行业专家建立信任、开展合作的企业主</span>
+      </p>
+    </div>
+    <div class="ref-item">
+      <div class="ref-num">!</div>
+      <p>
+        <span data-lang="kr" class="active">이런 경우는 먼저 고민해 보세요: 매주 수요일 오전 6시 30분 참석이 어렵거나, 소개를 주기보다 받기만 원하는 경우. BNI는 먼저 주는 사람이 얻는 곳입니다(Givers Gain®).</span>
+        <span data-lang="en">Think it over first if attending every Wednesday at 6:30 AM is difficult, or if you only want to receive referrals rather than give them. At BNI, those who give first are the ones who gain (Givers Gain®).</span>
+        <span data-lang="jp">次の場合はまずよく検討してください：毎週水曜の朝6時30分の参加が難しい場合、紹介を出すより受けることだけを望む場合。BNIは先に与える人が得る場所です（Givers Gain®）。</span>
+        <span data-lang="cn">以下情况请先慎重考虑：每周三早上6点30分难以出席，或只想接受推荐而不愿给予推荐。在BNI，先付出的人才会有收获（Givers Gain®）。</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CAREER : 챕터 운영 -->
+<section class="career">
+  <div class="section-label">Chapter</div>
+  <div class="section-title">
+    <span data-lang="kr" class="active">챕터 운영</span>
+    <span data-lang="en">How the chapter runs</span>
+    <span data-lang="jp">チャプター運営</span>
+    <span data-lang="cn">分会运营</span>
+  </div>
+  <div class="career-list">
+    <div class="career-item">
+      <div class="career-badge">
+        <span data-lang="kr" class="active">현재</span>
+        <span data-lang="en">Now</span>
+        <span data-lang="jp">現在</span>
+        <span data-lang="cn">现在</span>
+      </div>
+      <div class="career-content">
+        <h3>
+          <span data-lang="kr" class="active">9기 운영 중 · <span class="memberCount">32</span>명</span>
+          <span data-lang="en">9th term · <span class="memberCount">32</span> members</span>
+          <span data-lang="jp">第9期運営中 · <span class="memberCount">32</span>名</span>
+          <span data-lang="cn">第9期运营中 · <span class="memberCount">32</span>名成员</span>
+        </h3>
+        <p>
+          <span data-lang="kr" class="active">2022년 11월 9일 런칭. 6개월 단위 기수제로 의장단·리더십팀이 매 기수 새로 꾸려집니다.</span>
+          <span data-lang="en">Launched November 9, 2022. Terms run six months, and a new leadership team is formed each term.</span>
+          <span data-lang="jp">2022年11月9日発足。6か月ごとの期制で、役員・リーダーシップチームが期ごとに新しく組まれます。</span>
+          <span data-lang="cn">2022年11月9日成立。每6个月为一期，每期重新组建主席团和领导团队。</span>
+        </p>
+      </div>
+    </div>
+    <div class="career-item">
+      <div class="career-badge">
+        <span data-lang="kr" class="active">규칙</span>
+        <span data-lang="en">Rules</span>
+        <span data-lang="jp">ルール</span>
+        <span data-lang="cn">规则</span>
+      </div>
+      <div class="career-content">
+        <h3>
+          <span data-lang="kr" class="active">업종 독점 · 출결 관리</span>
+          <span data-lang="en">Profession exclusivity · attendance</span>
+          <span data-lang="jp">業種の独占 · 出欠管理</span>
+          <span data-lang="cn">行业独享 · 出勤管理</span>
+        </h3>
+        <p>
+          <span data-lang="kr" class="active">업종별 1명만 가입, 매주 정기 미팅 참석, 출석·지각·결석을 규칙으로 관리합니다.</span>
+          <span data-lang="en">One member per profession, weekly meeting attendance, and clear rules for attendance, lateness and absences.</span>
+          <span data-lang="jp">1業種1名のみ入会、毎週の定例ミーティングに参加し、出席・遅刻・欠席をルールで管理します。</span>
+          <span data-lang="cn">每个行业仅限一人加入，每周参加例会，出勤、迟到、缺席均按规则管理。</span>
+        </p>
+      </div>
+    </div>
+    <div class="career-item">
+      <div class="career-badge">
+        <span data-lang="kr" class="active">강점</span>
+        <span data-lang="en">Strength</span>
+        <span data-lang="jp">強み</span>
+        <span data-lang="cn">优势</span>
+      </div>
+      <div class="career-content">
+        <h3>
+          <span data-lang="kr" class="active">파워팀 협업</span>
+          <span data-lang="en">Power Team collaboration</span>
+          <span data-lang="jp">パワーチームでの協業</span>
+          <span data-lang="cn">强力团队协作</span>
+        </h3>
+        <p>
+          <span data-lang="kr" class="active">냉난방/설비 파워팀(이사·청소·에어컨 설치·에어컨 청소)처럼 같은 고객을 만나는 업종끼리 팀을 이뤄 소개를 주고받습니다.</span>
+          <span data-lang="en">Professions that serve the same customers team up and exchange referrals, like our heating, cooling and facilities Power Team (moving, cleaning, A/C installation, A/C cleaning).</span>
+          <span data-lang="jp">冷暖房・設備パワーチーム（引っ越し・清掃・エアコン設置・エアコン清掃）のように、同じお客様に出会う業種同士がチームを組んで紹介し合います。</span>
+          <span data-lang="cn">服务同一类客户的行业组成团队互相推荐，例如冷暖与设备强力团队（搬家、保洁、空调安装、空调清洗）。</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO = 갤러리 : portfolio1.jpg ~ portfolio10.jpg 를 이 폴더에 올리면 있는 사진만 3초 자동 슬라이드 -->
+<section class="portfolio">
+  <div class="section-label">Gallery</div>
+  <div class="section-title">
+    <span data-lang="kr" class="active">파이오니어의 아침</span>
+    <span data-lang="en">Mornings at Pioneer</span>
+    <span data-lang="jp">パイオニアの朝</span>
+    <span data-lang="cn">先锋分会的早晨</span>
+  </div>
+  <div class="portfolio-empty" id="portfolio-empty">
+    <span data-lang="kr" class="active">미팅·행사 사진 준비 중입니다</span>
+    <span data-lang="en">Meeting and event photos coming soon</span>
+    <span data-lang="jp">ミーティング・イベント写真を準備中です</span>
+    <span data-lang="cn">会议与活动照片准备中</span>
+  </div>
+  <div id="portfolio-box" style="display:none">
+    <div class="portfolio-track-wrap">
+      <div class="portfolio-track" id="portfolio-track"></div>
+    </div>
+    <div class="portfolio-nav">
+      <button class="portfolio-btn" onclick="portfolioSlide(-1)">‹</button>
+      <div class="portfolio-dots" id="portfolio-dots"></div>
+      <button class="portfolio-btn" onclick="portfolioSlide(1)">›</button>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERS : 멤버 비즈홈 · 이미지명함 링크 (목록은 아래 스크립트 MEMBERS 에서 관리) -->
+<section class="members">
+  <div class="section-label">Members</div>
+  <div class="section-title">
+    <span data-lang="kr" class="active">파이오니어 멤버</span>
+    <span data-lang="en">Pioneer Members</span>
+    <span data-lang="jp">パイオニアのメンバー</span>
+    <span data-lang="cn">先锋分会成员</span>
+  </div>
+  <p class="sub">
+    <span data-lang="kr" class="active">업종별로 한 명씩. 누르면 그 멤버의 비즈홈·이미지명함으로 이동합니다.</span>
+    <span data-lang="en">One member per profession. Tap to open that member's Biz Home or image card.</span>
+    <span data-lang="jp">1業種1名ずつ。タップするとそのメンバーのビズホーム・画像名刺が開きます。</span>
+    <span data-lang="cn">每个行业一位成员。点击即可查看该成员的商务主页或图片名片。</span>
+  </p>
+  <div class="member-list" id="memberList"></div>
+  <div class="member-more" id="memberMore"></div>
+</section>
+
+<!-- VISIT : 참관 신청 → 담당자 이메일 -->
+<section class="visit" id="visit">
+  <div class="section-label">Join Us</div>
+  <div class="section-title">
+    <span data-lang="kr" class="active">참관 신청</span>
+    <span data-lang="en">Visit a meeting</span>
+    <span data-lang="jp">見学申し込み</span>
+    <span data-lang="cn">申请参观</span>
+  </div>
+  <ul class="visit-info">
+    <li>
+      <span data-lang="kr" class="active">📅 <b>매주 수요일 오전 6:30</b> 오픈 네트워킹 · <b>7:00</b> 본회의 참관 (20초 내 사업 소개)</span>
+      <span data-lang="en">📅 <b>Every Wednesday, 6:30 AM</b> open networking · <b>7:00</b> main meeting (introduce your business in 20 seconds)</span>
+      <span data-lang="jp">📅 <b>毎週水曜 朝6:30</b> オープン・ネットワーキング · <b>7:00</b> 本会議を見学（20秒で事業紹介）</span>
+      <span data-lang="cn">📅 <b>每周三早上6:30</b> 自由交流 · <b>7:00</b> 参观正式会议（20秒介绍你的业务）</span>
+    </li>
+    <li>
+      <span data-lang="kr" class="active">✅ 참관비 5만원 · 👔 비즈니스 복장 · 🪪 명함 30장 이상</span>
+      <span data-lang="en">✅ Visitor fee KRW 50,000 · 👔 business attire · 🪪 30+ business cards</span>
+      <span data-lang="jp">✅ 見学費5万ウォン · 👔 ビジネス服装 · 🪪 名刺30枚以上</span>
+      <span data-lang="cn">✅ 参观费5万韩元 · 👔 商务着装 · 🪪 名片30张以上</span>
+    </li>
+  </ul>
+  <form class="vform" id="vform" novalidate>
+    <div class="vfg"><label><span data-lang="kr" class="active">성명(비지터)</span><span data-lang="en">Name (visitor)</span><span data-lang="jp">氏名（ビジター）</span><span data-lang="cn">姓名（访客）</span> *</label><input name="name"></div>
+    <div class="vfg"><label><span data-lang="kr" class="active">회사명</span><span data-lang="en">Company</span><span data-lang="jp">会社名</span><span data-lang="cn">公司名称</span> *</label><input name="company"></div>
+    <div class="vfg"><label><span data-lang="kr" class="active">직위</span><span data-lang="en">Position</span><span data-lang="jp">役職</span><span data-lang="cn">职位</span> *</label><input name="position"></div>
+    <div class="vfg"><label><span data-lang="kr" class="active">전문분야</span><span data-lang="en">Profession</span><span data-lang="jp">専門分野</span><span data-lang="cn">专业领域</span> *</label><input name="field"></div>
+    <div class="vfg"><label><span data-lang="kr" class="active">전화번호</span><span data-lang="en">Phone</span><span data-lang="jp">電話番号</span><span data-lang="cn">电话</span> *</label><input name="phone" type="tel" placeholder="010-0000-0000"></div>
+    <div class="vfg"><label><span data-lang="kr" class="active">이메일</span><span data-lang="en">Email</span><span data-lang="jp">メール</span><span data-lang="cn">电子邮箱</span> *</label><input name="email" type="email" placeholder="example@email.com"></div>
+    <div class="vfg"><label><span data-lang="kr" class="active">초대자(가디언)</span><span data-lang="en">Invited by (member)</span><span data-lang="jp">招待者（メンバー）</span><span data-lang="cn">邀请人（成员）</span></label><input name="guardian"></div>
+    <div class="vfg"><label><span data-lang="kr" class="active">방문일자</span><span data-lang="en">Visit date</span><span data-lang="jp">訪問日</span><span data-lang="cn">参观日期</span> *</label><select name="visitDate" id="visitDate"></select></div>
+    <div class="vfg"><label><span data-lang="kr" class="active">업력</span><span data-lang="en">Years in business</span><span data-lang="jp">事業歴</span><span data-lang="cn">从业年限</span></label><input name="career"></div>
+    <div class="vfg"><label><span data-lang="kr" class="active">BNI 관심도</span><span data-lang="en">Interest in BNI</span><span data-lang="jp">BNIへの関心度</span><span data-lang="cn">对BNI的兴趣</span> *</label>
+      <div class="vrate">
+        <label><input type="radio" name="interest" value="5"> 5 (<span data-lang="kr" class="active">높음</span><span data-lang="en">high</span><span data-lang="jp">高い</span><span data-lang="cn">高</span>)</label>
+        <label><input type="radio" name="interest" value="4"> 4</label>
+        <label><input type="radio" name="interest" value="3"> 3</label>
+        <label><input type="radio" name="interest" value="2"> 2</label>
+        <label><input type="radio" name="interest" value="1"> 1 (<span data-lang="kr" class="active">낮음</span><span data-lang="en">low</span><span data-lang="jp">低い</span><span data-lang="cn">低</span>)</label>
+      </div>
+    </div>
+    <label class="vagree"><input type="checkbox" id="vagree">
+      <span>
+        <span data-lang="kr" class="active">참관 안내 연락을 위해 위 정보를 챕터 담당자에게 보내는 데 동의합니다.</span>
+        <span data-lang="en">I agree to send the information above to the chapter's contact person so they can get in touch about my visit.</span>
+        <span data-lang="jp">見学のご案内の連絡のため、上記の情報をチャプター担当者に送ることに同意します。</span>
+        <span data-lang="cn">我同意将以上信息发送给分会负责人，以便联系参观事宜。</span>
+      </span>
+    </label>
+    <div class="vmsg" id="vmsg"></div>
+    <button class="btn btn-primary" id="vbtn" type="submit"></button>
+    <div class="vpay">
+      <div class="vpay-info">
+        <span data-lang="kr" class="active">💳 참관비 5만원 입금 계좌</span>
+        <span data-lang="en">💳 Visitor fee KRW 50,000 — bank account</span>
+        <span data-lang="jp">💳 見学費5万ウォン 振込口座</span>
+        <span data-lang="cn">💳 参观费5万韩元 汇款账户</span>
+        <b>카카오뱅크 79423640105</b>
+        <small>
+          <span data-lang="kr" class="active">예금주 정상현</span>
+          <span data-lang="en">Account holder: Jeong Sang-Hyun</span>
+          <span data-lang="jp">口座名義：チョン・サンヒョン</span>
+          <span data-lang="cn">户名：郑尚贤</span>
+        </small>
+      </div>
+      <button class="btn btn-secondary" type="button" id="copyAcct" onclick="copyAccount()"></button>
+    </div>
+  </form>
+</section>
+
+<!-- CONTACT -->
+<section class="contact">
+  <div class="section-label">Contact</div>
+  <div class="section-title">
+    <span data-lang="kr" class="active">찾아오시는 길</span>
+    <span data-lang="en">Getting here</span>
+    <span data-lang="jp">アクセス</span>
+    <span data-lang="cn">交通指南</span>
+  </div>
+  <div class="contact-list">
+    <a class="contact-item" href="#visit">
+      <div class="contact-icon">📋</div>
+      <div class="contact-label">
+        <span data-lang="kr" class="active">참관 신청</span>
+        <span data-lang="en">Visit</span>
+        <span data-lang="jp">見学申し込み</span>
+        <span data-lang="cn">申请参观</span>
+      </div>
+      <div class="contact-value">
+        <span data-lang="kr" class="active">신청서 작성</span>
+        <span data-lang="en">Fill out the form</span>
+        <span data-lang="jp">申込書を記入</span>
+        <span data-lang="cn">填写申请表</span>
+      </div>
+    </a>
+    <a class="contact-item" href="https://jinjjabg-hub.github.io/MANDU/?u=bni-pioneer" target="_blank">
+      <div class="contact-icon">💬</div>
+      <div class="contact-label">MANDU</div>
+      <div class="contact-value">
+        <span data-lang="kr" class="active">실시간 번역 메신저</span>
+        <span data-lang="en">Live translation chat</span>
+        <span data-lang="jp">リアルタイム翻訳チャット</span>
+        <span data-lang="cn">实时翻译聊天</span>
+      </div>
+    </a>
+    <a class="contact-item" style="grid-column: 1 / -1;" href="https://bnikorea.com/ko/" target="_blank" rel="noopener">
+      <div class="contact-icon">🌐</div>
+      <div class="contact-label">BNI Korea</div>
+      <div class="contact-value">
+        <span data-lang="kr" class="active">BNI 코리아 공식 홈페이지</span>
+        <span data-lang="en">BNI Korea official website</span>
+        <span data-lang="jp">BNIコリア公式サイト</span>
+        <span data-lang="cn">BNI韩国官方网站</span>
+      </div>
+    </a>
+    <a class="contact-item" style="grid-column: 1 / -1;" href="https://map.kakao.com/link/search/%EC%95%84%EB%B0%94%EB%8B%88%EC%84%BC%ED%8A%B8%EB%9F%B4%EB%B6%80%EC%82%B0" target="_blank">
+      <div class="contact-icon">📍</div>
+      <div class="contact-label">
+        <span data-lang="kr" class="active">미팅 장소 (탭하면 지도 열림)</span>
+        <span data-lang="en">Meeting venue (tap to open map)</span>
+        <span data-lang="jp">会場（タップで地図）</span>
+        <span data-lang="cn">会议地点（点击打开地图）</span>
+      </div>
+      <div class="contact-value">
+        <span data-lang="kr" class="active">부산광역시 남구 전포대로 133 아바니센트럴부산 3층</span>
+        <span data-lang="en">3F, Avani Central Busan, 133 Jeonpo-daero, Nam-gu, Busan</span>
+        <span data-lang="jp">釜山広域市 南区 田浦大路133 アヴァニ・セントラル釜山 3階</span>
+        <span data-lang="cn">釜山广域市南区田浦大路133号 Avani Central Busan 3楼</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ACTION -->
+<div class="action">
+  <div class="btn-group">
+    <button class="btn btn-primary" onclick="saveToCardbook({id:'bni-pioneer',name:'BNI 파이오니어 챕터',nameEn:'BNI Pioneer Chapter',title:'부산 비즈니스 모임',company:'BNI 파이오니어 챕터',phone:'',email:'',chapter:'BNI 파이오니어',bni:'챕터',url:window.location.href})">
+      <span data-lang="kr" class="active">🗂️ 비즈홈 저장 (CardBook)</span>
+      <span data-lang="en">🗂️ Save to CardBook</span>
+      <span data-lang="jp">🗂️ ビズホームを保存（CardBook）</span>
+      <span data-lang="cn">🗂️ 保存商务主页（CardBook）</span>
+    </button>
+    <button class="btn btn-share" onclick="shareCard()">
+      <span data-lang="kr" class="active">📤 비즈홈 전달하기</span>
+      <span data-lang="en">📤 Share this Biz Home</span>
+      <span data-lang="jp">📤 ビズホームを共有</span>
+      <span data-lang="cn">📤 分享商务主页</span>
+    </button>
+  </div>
+</div>
+
+<!-- 공유 바텀시트 (Web Share API 미지원 브라우저 폴백) -->
+<div class="share-sheet" id="shareSheet">
+  <div class="share-backdrop" onclick="closeShare()"></div>
+  <div class="share-panel">
+    <div class="share-handle"></div>
+    <div class="share-title">
+      <span data-lang="kr" class="active">비즈홈 전달하기</span>
+      <span data-lang="en">Share this Biz Home</span>
+      <span data-lang="jp">ビズホームを共有</span>
+      <span data-lang="cn">分享商务主页</span>
+    </div>
+    <div class="share-btns">
+      <button class="share-btn" onclick="shareKakao()">
+        <div class="share-btn-icon" style="background:#FEE500;">💬</div><span>KakaoTalk</span>
+      </button>
+      <button class="share-btn" onclick="shareSMS()">
+        <div class="share-btn-icon" style="background:#34c759;">✉️</div><span>SMS</span>
+      </button>
+      <button class="share-btn" onclick="copyLink()">
+        <div class="share-btn-icon" style="background:#e8e8e8;">🔗</div><span>Link</span>
+      </button>
+      <button class="share-btn" onclick="shareQR()">
+        <div class="share-btn-icon" style="background:#162311;">📱</div><span>QR</span>
+      </button>
+    </div>
+    <button class="share-cancel" onclick="closeShare()">
+      <span data-lang="kr" class="active">취소</span>
+      <span data-lang="en">Cancel</span>
+      <span data-lang="jp">キャンセル</span>
+      <span data-lang="cn">取消</span>
+    </button>
+  </div>
+</div>
+
+<!-- 만두 연결 (카드 주인 전용, 방문자는 무시해도 되는 위치) -->
+<div class="mandu-activate-wrap" style="padding:14px 20px 4px;text-align:center;">
+  <button id="mandu-activate-btn" onclick="activateMandu()"
+    style="background:none;border:1px solid rgba(232,236,209,0.3);color:var(--muted-dark);font-size:10.5px;padding:7px 14px;border-radius:20px;cursor:pointer;font-family: 'Paperlogy', 'Noto Sans KR', sans-serif;">
+    💬 본인 비즈홈이신가요? 만두 연결하기 (1회)
+  </button>
+  <div id="mandu-activate-done" style="display:none;font-size:10.5px;color:var(--sage);padding:7px 0;">
+    ✅ 만두 연결 완료 — 이제 이 비즈홈으로 DM을 받을 수 있어요
+  </div>
+</div>
+
+<!-- 이미지명함 팝업 -->
+<div class="card-pop" id="cardPop" onclick="if (event.target === this) closeCard()">
+  <div class="card-pop-box">
+    <img id="cardPopImg" alt="">
+    <div class="card-pop-btns">
+      <a class="btn btn-primary" id="cardPopCall" href="#"></a>
+      <button class="btn btn-secondary" id="cardPopClose" onclick="closeCard()"></button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="company">
+    <span data-lang="kr" class="active">BNI 파이오니어 챕터</span>
+    <span data-lang="en">BNI Pioneer Chapter</span>
+    <span data-lang="jp">BNI パイオニア・チャプター</span>
+    <span data-lang="cn">BNI 先锋分会</span>
+  </div>
+  <div class="slogan-footer">Givers Gain® · Biz Home by T.M LINK</div>
+</footer>
+
+<script>
+/* ===== 챕터 설정: 여기만 고치면 됩니다 ===== */
+// 참관 신청서를 받을 담당자 이메일 (첫 신청 때 오는 FormSubmit 확인 메일에서 Activate 1회)
+const MANAGER_EMAIL = 'jinjjabg@gmail.com';
+// 같은 신청서를 함께 받을 참조 메일 (쉼표로 여러 개, 비우면 참조 없음)
+const CC_EMAILS = 'bellauomo@naver.com,kl4854@gmail.com';
+// 기존 챕터 홈페이지와 같은 구글 시트에도 함께 기록 (비우면 시트 기록 안 함)
+// 참관비 입금 계좌 (복사 버튼이 복사하는 글자)
+const ACCOUNT_TEXT = '카카오뱅크 79423640105';
+// 방문일: 매주 수요일만 선택. 아래 날짜(공휴일·챕터 휴회일)는 목록에서 빠진다. 해마다 다음 해 날짜를 추가할 것.
+const NO_MEETING_DAYS = [
+  '2026-02-18', // 설날 연휴
+  '2026-06-03', // 전국동시지방선거
+  '2027-05-05', // 어린이날
+  '2027-09-15', // 추석
+];
+const VISIT_WEEKS = 8; // 앞으로 몇 번의 수요일을 보여줄지
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyRFVCMc7VUxq8TKDH82vUzGe_kaYTUD84EL4-OLcM90hjsEzgvQhjyuAyOwRwsf5smDQ/exec';
+
+// 멤버: 화면에는 이름 대신 업종으로 보여준다(name은 관리용, 순서 = 화면 순서). job = 업종(4개 국어), home = 비즈홈 주소,
+// card = 이미지명함 파일(cards 폴더, 누르면 팝업), tel = 팝업의 전화 버튼 번호 (없으면 비워 둠)
+const MEMBERS = [
+  { name:'송승훈', job:{kr:'앱 개발·웹 제작(비즈홈)', en:'App development & web design (Biz Home)', jp:'アプリ開発・Web制作（ビズホーム）', cn:'应用开发·网站制作（商务主页）'}, home:'https://jinjjabg-hub.github.io/BNI-PIONEER-cards/송승훈/' },
+  { name:'이상호', job:{kr:'인테리어(숙박·병원·상가)', en:'Interiors (lodging, clinics, retail)', jp:'インテリア（宿泊・病院・商業施設）', cn:'室内装修（住宿·医院·商铺）'}, card:'cards/interior.jpg', tel:'010-8501-8612' },
+  { name:'조현우', job:{kr:'고용지원금', en:'Employment subsidies', jp:'雇用助成金', cn:'雇佣补贴'}, card:'cards/subsidy.jpg', tel:'010-6590-0731' },
+  { name:'김근우', job:{kr:'인쇄·디자인', en:'Printing & design', jp:'印刷・デザイン', cn:'印刷·设计'}, card:'cards/printing.jpg', tel:'010-5664-5710' },
+  { name:'김지현', job:{kr:'숙박업 컨설팅', en:'Lodging business consulting', jp:'宿泊業コンサルティング', cn:'住宿业咨询'}, home:'https://jinjjabg-hub.github.io/BNI-PIONEER-cards/김지현/' },
+  { name:'김경태', job:{kr:'상조서비스', en:'Funeral services', jp:'葬儀サービス', cn:'殡葬服务'}, home:'https://jinjjabg-hub.github.io/BNI-PIONEER-cards/김경태/' },
+  { name:'심학봉', job:{kr:'손해보험', en:'Property & casualty insurance', jp:'損害保険', cn:'财产保险'}, card:'cards/pc-insurance.jpg', tel:'010-5535-4004' },
+  { name:'이화춘', job:{kr:'반영구 뷰티', en:'Semi-permanent makeup', jp:'アートメイク', cn:'半永久化妆'}, home:'https://jinjjabg-hub.github.io/BNI-PIONEER-cards/이화춘/' },
+  { name:'최경수', job:{kr:'휴대폰·통신', en:'Mobile phones & telecom', jp:'携帯電話・通信', cn:'手机·通信'}, card:'cards/mobile.jpg', tel:'010-4194-6666' },
+  { name:'이소연', job:{kr:'미술교육', en:'Art education', jp:'美術教育', cn:'美术教育'}, card:'cards/art.jpg', tel:'010-9011-8318' },
+  { name:'임춘식', job:{kr:'꽃·화환 유통', en:'Flowers & wreath distribution', jp:'花・花輪の流通', cn:'鲜花·花环流通'}, home:'https://jinjjabg-hub.github.io/BNI-PIONEER-cards/임춘식/' },
+  { name:'정명수', job:{kr:'에어컨 설치·관리', en:'A/C installation & maintenance', jp:'エアコン設置・管理', cn:'空调安装·维护'}, card:'cards/aircon.jpg', tel:'010-7287-8707' },
+  { name:'홍정택', job:{kr:'경호', en:'Bodyguard & security services', jp:'警護', cn:'安保护卫'}, card:'cards/security.jpg', tel:'010-5551-8096' },
+  { name:'박진성', job:{kr:'부동산 중개·컨설팅', en:'Real estate brokerage & consulting', jp:'不動産仲介・コンサルティング', cn:'房地产中介·咨询'}, home:'https://jinjjabg-hub.github.io/BNI-PIONEER-cards/박진성/' },
+  { name:'박미성', job:{kr:'경영컨설팅', en:'Management consulting', jp:'経営コンサルティング', cn:'经营咨询'}, home:'https://jinjjabg-hub.github.io/BNI-PIONEER-cards/박미성/' },
+  { name:'이채홍', job:{kr:'법무사(형사사건 전문)', en:'Judicial scrivener (criminal cases)', jp:'司法書士（刑事事件専門）', cn:'法务师（专攻刑事案件）'}, home:'https://jinjjabg-hub.github.io/BNI-PIONEER-cards/이채홍/' },
+  { name:'박선영', job:{kr:'안전용품(작업화·작업복·실리콘)', en:'Safety gear (work shoes, workwear, silicone)', jp:'安全用品（作業靴・作業服・シリコン）', cn:'安全用品（工作鞋·工作服·硅胶）'}, home:'https://jinjjabg-hub.github.io/BNI-PIONEER-cards/박선영/' },
+  { name:'조은영', job:{kr:'냉동공조·실내공기정화 솔루션', en:'Refrigeration, HVAC & indoor air purification', jp:'冷凍空調・室内空気清浄ソリューション', cn:'冷冻空调·室内空气净化方案'}, home:'https://jinjjabg-hub.github.io/BNI-PIONEER-cards/조은영/' },
+  { name:'이도현', job:{kr:'생명보험', en:'Life insurance', jp:'生命保険', cn:'人寿保险'}, card:'cards/life-insurance.jpg', tel:'010-3952-9936' },
+  { name:'정상현', job:{kr:'해외보험금융', en:'Overseas insurance & finance', jp:'海外保険金融', cn:'海外保险金融'}, home:'https://jinjjabg-hub.github.io/BNI-PIONEER-cards/정상현/' },
+  { name:'마루이', job:{kr:'맞춤 수제 양복', en:'Custom tailored suits', jp:'オーダーメイドスーツ', cn:'定制手工西装'}, card:'cards/suit.jpg', tel:'010-4097-4854' },
+  { name:'문성우', job:{kr:'요식업(고기구이)', en:'Restaurant (grilled meat)', jp:'飲食業（焼肉）', cn:'餐饮（烤肉）'}, card:'cards/bbq.jpg', tel:'010-6695-9659' },
+  { name:'윤민수', job:{kr:'태닝', en:'Tanning salon', jp:'日焼けサロン', cn:'美黑'}, home:'https://jinjjabg-hub.github.io/BNI-PIONEER-cards/윤민수/' },
+  { name:'이수민', job:{kr:'기름·곡물 가공품', en:'Oil & grain products', jp:'油・穀物加工品', cn:'油品·谷物加工品'}, card:'cards/oil.jpg', tel:'010-2890-2753' },
+  { name:'박지형', job:{kr:'세무', en:'Tax services', jp:'税務', cn:'税务'}, card:'cards/tax.jpg', tel:'010-8759-9115' },
+  { name:'박병준', job:{kr:'소파·가구 제작', en:'Sofa & furniture making', jp:'ソファ・家具製作', cn:'沙发·家具制作'}, card:'cards/furniture.jpg', tel:'010-5090-8254' },
+  { name:'이해경', job:{kr:'기업교육', en:'Corporate training', jp:'企業研修', cn:'企业培训'}, home:'https://jinjjabg-hub.github.io/BNI-PIONEER-cards/이해경/' },
+  { name:'조진성', job:{kr:'청소', en:'Cleaning', jp:'清掃', cn:'保洁'}, card:'cards/cleaning.jpg', tel:'010-7566-7596' },
+  { name:'이은성', job:{kr:'기업행사 MC·세일즈 강사', en:'Corporate event MC & sales trainer', jp:'企業イベントMC・セールス講師', cn:'企业活动主持·销售讲师'}, card:'cards/mc.jpg', tel:'010-4114-2560' },
+  { name:'오예준', job:{kr:'커튼·블라인드', en:'Curtains & blinds', jp:'カーテン・ブラインド', cn:'窗帘·百叶窗'}, card:'cards/curtain.jpg', tel:'010-4311-9401' },
+  { name:'이훈', job:{kr:'병원컨설팅', en:'Hospital consulting', jp:'病院コンサルティング', cn:'医院咨询'}, card:'cards/hospital.jpg', tel:'010-2555-8258' },
+  { name:'김여련', job:{kr:'변호사', en:'Attorney', jp:'弁護士', cn:'律师'}, card:'cards/lawyer.jpg', tel:'010-4758-5457' },
+  { name:'최소은', job:{kr:'농산물(마늘·생강) 도소매', en:'Produce wholesale & retail (garlic, ginger)', jp:'農産物（にんにく・生姜）卸売・小売', cn:'农产品（大蒜·生姜）批发零售'} },
+];
+/* ========================================== */
+
+const LANGS = ['kr', 'en', 'jp', 'cn'];
+let CUR_LANG = 'kr';
+// {kr,en,jp,cn} → 언어별 span (지금 언어만 active)
+function L(t) {
+  return LANGS.map(l => `<span data-lang="${l}"${l === CUR_LANG ? ' class="active"' : ''}>${t[l]}</span>`).join('');
+}
+// 스크립트가 쓰는 문구 (현재 언어로 바로 꺼내 씀)
+const TX = {
+  home:    {kr:'비즈홈 →', en:'Biz Home →', jp:'ビズホーム →', cn:'商务主页 →'},
+  card:    {kr:'이미지명함 →', en:'Image card →', jp:'画像名刺 →', cn:'图片名片 →'},
+  more:    {kr:'함께하는 업종 (비즈홈 준비 중)', en:'Also in the chapter (Biz Home coming soon)', jp:'その他の業種（ビズホーム準備中）', cn:'其他行业（商务主页准备中）'},
+  send:    {kr:'📋 참관 신청 보내기', en:'📋 Send visit request', jp:'📋 見学を申し込む', cn:'📋 提交参观申请'},
+  sending: {kr:'보내는 중...', en:'Sending...', jp:'送信中...', cn:'提交中...'},
+  done:    {kr:'신청 완료 ✓', en:'Sent ✓', jp:'申し込み完了 ✓', cn:'申请完成 ✓'},
+  ok:      {kr:'✅ 참관 신청이 접수되었습니다. 담당자가 곧 연락드리겠습니다.', en:'✅ Your visit request has been received. Our contact person will be in touch soon.', jp:'✅ 見学のお申し込みを受け付けました。担当者よりまもなくご連絡します。', cn:'✅ 参观申请已提交，负责人会尽快与您联系。'},
+  fail:    {kr:'전송에 실패했습니다. 잠시 후 다시 시도해 주세요.', en:'Sending failed. Please try again in a moment.', jp:'送信に失敗しました。しばらくしてからもう一度お試しください。', cn:'提交失败，请稍后再试。'},
+  email:   {kr:'이메일 형식을 확인해 주세요.', en:'Please check your email address.', jp:'メールアドレスの形式をご確認ください。', cn:'请检查电子邮箱格式。'},
+  rate:    {kr:'BNI 관심도를 선택해 주세요.', en:'Please choose your interest in BNI.', jp:'BNIへの関心度を選択してください。', cn:'请选择您对BNI的兴趣程度。'},
+  agree:   {kr:'정보 전달 동의에 체크해 주세요.', en:'Please check the consent box.', jp:'情報送信への同意にチェックしてください。', cn:'请勾选信息发送同意。'},
+  noset:   {kr:'신청 접수 설정이 아직 안 되어 있습니다. 챕터 멤버에게 문의해 주세요.', en:'Requests are not set up yet. Please contact a chapter member.', jp:'受付設定がまだ完了していません。チャプターのメンバーにお問い合わせください。', cn:'申请功能尚未设置，请联系分会成员。'},
+  copied:  {kr:'링크가 복사되었습니다!', en:'Link copied!', jp:'リンクをコピーしました！', cn:'链接已复制！'},
+  call:    {kr:'📞 전화하기', en:'📞 Call', jp:'📞 電話する', cn:'📞 拨打电话'},
+  close:   {kr:'닫기', en:'Close', jp:'閉じる', cn:'关闭'},
+  acct:    {kr:'📋 계좌번호 복사', en:'📋 Copy account number', jp:'📋 口座番号をコピー', cn:'📋 复制账号'},
+  acctOk:  {kr:'✓ 복사됐어요 · 은행 앱에 붙여넣기', en:'✓ Copied — paste it in your bank app', jp:'✓ コピーしました · 銀行アプリに貼り付け', cn:'✓ 已复制 · 请粘贴到银行APP'},
+};
+const REQ = {
+  name:      {kr:'성명을 입력해 주세요.', en:'Please enter your name.', jp:'氏名を入力してください。', cn:'请输入姓名。'},
+  company:   {kr:'회사명을 입력해 주세요.', en:'Please enter your company.', jp:'会社名を入力してください。', cn:'请输入公司名称。'},
+  position:  {kr:'직위를 입력해 주세요.', en:'Please enter your position.', jp:'役職を入力してください。', cn:'请输入职位。'},
+  field:     {kr:'전문분야를 입력해 주세요.', en:'Please enter your profession.', jp:'専門分野を入力してください。', cn:'请输入专业领域。'},
+  phone:     {kr:'전화번호를 입력해 주세요.', en:'Please enter your phone number.', jp:'電話番号を入力してください。', cn:'请输入电话号码。'},
+  email:     {kr:'이메일을 입력해 주세요.', en:'Please enter your email.', jp:'メールアドレスを入力してください。', cn:'请输入电子邮箱。'},
+  visitDate: {kr:'방문일자를 입력해 주세요.', en:'Please choose a visit date.', jp:'訪問日を入力してください。', cn:'请选择参观日期。'},
+};
+const PH = {
+  name:     {kr:'홍길동', en:'Your name', jp:'お名前', cn:'您的姓名'},
+  position: {kr:'예: 대표', en:'e.g. CEO', jp:'例：代表', cn:'例：总经理'},
+  field:    {kr:'예: 세무회계', en:'e.g. Tax & accounting', jp:'例：税務会計', cn:'例：税务会计'},
+  career:   {kr:'예: 10년', en:'e.g. 10 years', jp:'例：10年', cn:'例：10年'},
+};
+
+function renderMembers() {
+  document.querySelectorAll('.memberCount').forEach(el => el.textContent = MEMBERS.length);
+  const linked = MEMBERS.filter(m => m.home || m.card);
+  const rest = MEMBERS.filter(m => !m.home && !m.card);
+  const items = [];
+  linked.forEach(m => {
+    if (m.home) items.push(`<a class="member-item" href="${m.home}"><div class="member-name">${L(m.job)}</div><div class="member-links"><span class="ml-home">${L(TX.home)}</span></div></a>`);
+    if (m.card) items.push(`<a class="member-item" href="${m.card}" onclick="openCard(${MEMBERS.indexOf(m)}); return false;"><div class="member-name">${L(m.job)}</div><div class="member-links"><span class="ml-card">${L(TX.card)}</span></div></a>`);
+  });
+  document.getElementById('memberList').innerHTML = items.join('');
+  document.getElementById('memberMore').innerHTML = rest.length
+    ? `<b>${L(TX.more)}</b>${LANGS.map(l => `<span data-lang="${l}"${l === CUR_LANG ? ' class="active"' : ''}>${rest.map(m => m.job[l]).join(' · ')}</span>`).join('')}`
+    : '';
+}
+renderMembers();
+
+/* ── 이미지명함 팝업 ── */
+function openCard(i) {
+  const m = MEMBERS[i];
+  document.getElementById('cardPopImg').src = m.card;
+  document.getElementById('cardPopImg').alt = m.job[CUR_LANG];
+  const call = document.getElementById('cardPopCall');
+  call.style.display = m.tel ? '' : 'none';
+  if (m.tel) { call.href = 'tel:' + m.tel.replace(/[^0-9]/g, ''); call.textContent = TX.call[CUR_LANG]; }
+  document.getElementById('cardPopClose').textContent = TX.close[CUR_LANG];
+  document.getElementById('cardPop').classList.add('on');
+  document.body.style.overflow = 'hidden';
+}
+function closeCard() {
+  document.getElementById('cardPop').classList.remove('on');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCard(); });
+
+// 언어가 바뀔 때 입력칸 예시 문구와 신청 버튼도 함께 바꾼다 (setLang에서 호출)
+function applyLangExtras() {
+  for (const k in PH) {
+    const el = document.querySelector(`#vform [name="${k}"]`);
+    if (el) el.placeholder = PH[k][CUR_LANG];
+  }
+  const btn = document.getElementById('vbtn');
+  if (!btn.disabled) btn.textContent = TX.send[CUR_LANG];
+  document.getElementById('copyAcct').textContent = TX.acct[CUR_LANG];
+  if (typeof renderVisitDates === 'function') renderVisitDates();
+  document.documentElement.lang = {kr:'ko', en:'en', jp:'ja', cn:'zh'}[CUR_LANG];
+}
+applyLangExtras();
+
+/* ── 참관비 계좌번호 복사 ── */
+function copyAccount() {
+  const btn = document.getElementById('copyAcct');
+  const done = () => {
+    btn.textContent = TX.acctOk[CUR_LANG];
+    setTimeout(() => { btn.textContent = TX.acct[CUR_LANG]; }, 2500);
+  };
+  const fallback = () => {
+    const t = document.createElement('textarea');
+    t.value = ACCOUNT_TEXT;
+    document.body.appendChild(t); t.select(); document.execCommand('copy');
+    document.body.removeChild(t);
+    done();
+  };
+  if (navigator.clipboard) navigator.clipboard.writeText(ACCOUNT_TEXT).then(done).catch(fallback);
+  else fallback();
+}
+
+/* ── 참관 신청 ── */
+// 다음 수요일부터 공휴일·휴회일을 빼고 VISIT_WEEKS개를 고를 수 있게 한다 (다른 요일은 선택 불가)
+const DOW = {kr:'수', en:'Wed', jp:'水', cn:'周三'};
+function ymd(d) {
+  return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+}
+function visitLabel(d) {
+  const m = d.getMonth() + 1, day = d.getDate();
+  return {
+    kr: `${m}월 ${day}일 (수) 오전 6:30`,
+    en: `Wed, ${d.toLocaleString('en-US', { month: 'short' })} ${day} · 6:30 AM`,
+    jp: `${m}月${day}日（水）朝6:30`,
+    cn: `${m}月${day}日（周三）早上6:30`,
+  }[CUR_LANG];
+}
+function renderVisitDates() {
+  const sel = document.getElementById('visitDate');
+  const keep = sel.value;
+  const d = new Date(); d.setHours(0, 0, 0, 0);
+  d.setDate(d.getDate() + ((3 - d.getDay() + 7) % 7 || 7));
+  const opts = [];
+  while (opts.length < VISIT_WEEKS) {
+    if (!NO_MEETING_DAYS.includes(ymd(d))) opts.push(`<option value="${ymd(d)}">${visitLabel(d)}</option>`);
+    d.setDate(d.getDate() + 7);
+  }
+  sel.innerHTML = opts.join('');
+  if (keep && [...sel.options].some(o => o.value === keep)) sel.value = keep;
+}
+renderVisitDates();
+document.getElementById('vform').addEventListener('submit', async e => {
+  e.preventDefault();
+  const f = e.target, msg = document.getElementById('vmsg'), btn = document.getElementById('vbtn');
+  const show = (t, ok) => { msg.textContent = t[CUR_LANG]; msg.className = 'vmsg ' + (ok ? 'ok' : 'err'); };
+  const data = Object.fromEntries(new FormData(f).entries());
+  for (const k in data) data[k] = (data[k] || '').trim();
+  for (const k in REQ) if (!data[k]) return show(REQ[k]);
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) return show(TX.email);
+  if (!data.interest) return show(TX.rate);
+  if (!document.getElementById('vagree').checked) return show(TX.agree);
+  if (!MANAGER_EMAIL && !SHEET_URL) return show(TX.noset);
+
+  btn.disabled = true; btn.textContent = TX.sending[CUR_LANG];
+  data.lang = CUR_LANG;
+  const jobs = [];
+  if (MANAGER_EMAIL) {
+    jobs.push(fetch('https://formsubmit.co/ajax/' + MANAGER_EMAIL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: `[파이오니어 참관 신청] ${data.name} · ${data.field}`,
+        _template: 'table', _captcha: 'false',
+        ...(CC_EMAILS ? { _cc: CC_EMAILS } : {}),
+        성명: data.name, 회사명: data.company, 직위: data.position, 전문분야: data.field,
+        전화번호: data.phone, 이메일: data.email, 초대자: data.guardian, 방문일자: data.visitDate,
+        업력: data.career, BNI관심도: data.interest, 신청언어: data.lang,
+      }),
+    }).then(r => { if (!r.ok) throw new Error('mail'); }));
+  }
+  if (SHEET_URL) {
+    jobs.push(fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(data) }));
+  }
+  const results = await Promise.allSettled(jobs);
+  if (results.some(r => r.status === 'fulfilled')) {
+    show(TX.ok, true);
+    f.reset(); btn.textContent = TX.done[CUR_LANG];
+  } else {
+    show(TX.fail);
+    btn.disabled = false; btn.textContent = TX.send[CUR_LANG];
+  }
+});
+</script>
+
+<script src="https://cardbook.bizmy.net/save-to-cardbook.js?v=20261011b"></script>
+<script>
+function setLang(lang) {
+  CUR_LANG = lang;
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    el.classList.toggle('active', el.getAttribute('data-lang') === lang);
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    const m = btn.getAttribute('onclick').match(/'(\w+)'/);
+    btn.classList.toggle('active', m && m[1] === lang);
+  });
+  applyLangExtras();
+}
+
+/* ── 명함 전달하기 ── */
+const CARD_URL = 'https://bnich.bizmy.net/pioneer/';
+const CARD_TITLE = 'BNI 파이오니어 챕터 | 부산 비즈니스 모임';
+const CARD_TEXT = '부산 BNI 파이오니어 챕터 — 매주 수요일 오전 6시 30분, 참관 신청 받습니다.';
+
+function shareCard() {
+  if (navigator.share) {
+    navigator.share({ title: CARD_TITLE, text: CARD_TEXT, url: CARD_URL }).catch(() => {});
+  } else {
+    document.getElementById('shareSheet').style.display = 'block';
+  }
+}
+function closeShare() { document.getElementById('shareSheet').style.display = 'none'; }
+function shareKakao() {
+  window.open('https://sharer.kakao.com/talk/friends/picker/link?app_key=&url=' + encodeURIComponent(CARD_URL), '_blank');
+  closeShare();
+}
+function shareSMS() {
+  location.href = 'sms:?body=' + encodeURIComponent(CARD_TITLE + '\n' + CARD_URL);
+  closeShare();
+}
+function copyLink() {
+  navigator.clipboard.writeText(CARD_URL).then(() => alert(TX.copied[CUR_LANG])).catch(() => {
+    const t = document.createElement('textarea');
+    t.value = CARD_URL;
+    document.body.appendChild(t); t.select(); document.execCommand('copy');
+    document.body.removeChild(t);
+    alert(TX.copied[CUR_LANG]);
+  });
+  closeShare();
+}
+function shareQR() { window.open('qr.png', '_blank'); closeShare(); }
+
+/* ── PORTFOLIO 자동 슬라이드 (표준: 3초 간격, 터치 스와이프, 수동 조작 시 타이머 리셋) ──
+   portfolio 섹션이 없는 명함(HTML에서 <section class="portfolio"> 삭제한 경우)에는
+   아래 코드가 아무 일도 하지 않고 조용히 종료된다.
+   챕터 카드: 사진을 미리 확인한 뒤 initPortfolio()로 시작한다 (아래 갤러리 불러오기). */
+function initPortfolio() {
+  const track = document.getElementById('portfolio-track');
+  if (!track) return;
+
+  const slides = track.querySelectorAll('.portfolio-slide');
+  const total = slides.length;
+  const dotsWrap = document.getElementById('portfolio-dots');
+  let idx = 0, timer = null;
+
+  for (let i = 0; i < total; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'portfolio-dot' + (i === 0 ? ' active' : '');
+    dot.onclick = () => { go(i); reset(); };
+    dotsWrap.appendChild(dot);
+  }
+
+  function render() {
+    track.style.transform = `translateX(-${idx * 100}%)`;
+    dotsWrap.querySelectorAll('.portfolio-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
+  }
+  function go(i) { idx = (i + total) % total; render(); }
+  window.portfolioSlide = function (dir) { go(idx + dir); reset(); };
+  function auto() { timer = setTimeout(() => { go(idx + 1); auto(); }, 3000); }
+  function reset() { clearTimeout(timer); auto(); }
+
+  let startX = 0;
+  track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; clearTimeout(timer); }, { passive: true });
+  track.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 40) go(idx + (dx < 0 ? 1 : -1));
+    auto();
+  }, { passive: true });
+
+  auto();
+}
+
+/* ── 갤러리 불러오기: portfolio1~10.jpg 중 실제로 있는 사진만 순서대로 ── */
+(function () {
+  const MAX = 10;
+  const probes = Array.from({ length: MAX }, (_, i) => new Promise(res => {
+    const img = new Image();
+    img.onload = () => res(`portfolio${i + 1}.jpg`);
+    img.onerror = () => res(null);
+    img.src = `portfolio${i + 1}.jpg`;
+  }));
+  Promise.all(probes).then(list => {
+    const found = list.filter(Boolean);
+    if (!found.length) return;
+    document.getElementById('portfolio-track').innerHTML =
+      found.map((src, i) => `<div class="portfolio-slide"><img src="${src}" alt="gallery ${i + 1}"></div>`).join('');
+    document.getElementById('portfolio-empty').style.display = 'none';
+    document.getElementById('portfolio-box').style.display = 'block';
+    initPortfolio();
+  });
+})();
+
+/* ── 만두 원클릭 연결 (카드 주인 전용) ──────────────────────────
+   구글 로그인 1번 → manduid_index/bni-pioneer 문서에 uid 자동 등록.
+   MANDU 링크(?u=bni-pioneer)는 카드 제작 시점에 이미 고정돼 있으므로
+   *아무도(송승훈 포함) 링크를 중간에서 복사·전달·붙여넣기 할 필요가 없다.*
+   save-to-cardbook.js가 이미 firebase를 로드해두므로 그걸 재사용한다. */
+async function _manduWaitFirebase(maxTries) {
+  let tries = 0;
+  while ((typeof firebase === 'undefined' || !firebase.apps || !firebase.apps.length) && tries < (maxTries || 50)) {
+    await new Promise(r => setTimeout(r, 100));
+    tries++;
+  }
+  return typeof firebase !== 'undefined' && firebase.apps && firebase.apps.length > 0;
+}
+
+async function _manduFinishActivate(user) {
+  const slug = 'bni-pioneer';
+  const db = firebase.firestore();
+
+  // 이미 다른 uid로 연결돼 있으면 덮어쓰지 않음 (실수·장난 클릭으로부터 카드 보호)
+  const existing = await db.collection('manduid_index').doc(slug).get();
+  if (existing.exists && existing.data().uid !== user.uid) {
+    const btn = document.getElementById('mandu-activate-btn');
+    if (btn) btn.style.display = 'none';
+    const done = document.getElementById('mandu-activate-done');
+    if (done) { done.textContent = 'ℹ️ 이미 연결된 비즈홈이에요'; done.style.display = 'block'; }
+    return;
+  }
+
+  await db.collection('users').doc(user.uid).set({
+    uid: user.uid, displayName: user.displayName || '', photoURL: user.photoURL || '',
+    email: user.email || '', manduid: slug
+  }, { merge: true });
+  await db.collection('manduid_index').doc(slug).set({
+    uid: user.uid, createdAt: firebase.firestore.FieldValue.serverTimestamp()
+  }, { merge: true });
+  const btn = document.getElementById('mandu-activate-btn');
+  const done = document.getElementById('mandu-activate-done');
+  if (btn) btn.style.display = 'none';
+  if (done) done.style.display = 'block';
+}
+
+async function activateMandu() {
+  if (!confirm('본인 비즈홈이 맞나요?\n구글 로그인하면 이 비즈홈으로 만두 DM을 받을 수 있게 연결돼요.')) return;
+  const btn = document.getElementById('mandu-activate-btn');
+  if (btn) { btn.disabled = true; btn.textContent = '연결 중...'; }
+  const ready = await _manduWaitFirebase();
+  if (!ready) {
+    if (btn) { btn.disabled = false; btn.textContent = '💬 본인 비즈홈이신가요? 만두 연결하기 (1회)'; }
+    alert('연결 실패. 잠시 후 다시 시도해주세요.');
+    return;
+  }
+  try {
+    const auth = firebase.auth();
+    await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+    const provider = new firebase.auth.GoogleAuthProvider();
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (isMobile) {
+      sessionStorage.setItem('_manduPendingSlug', 'bni-pioneer');
+      await auth.signInWithRedirect(provider);
+      return; // 리다이렉트 후 아래 즉시실행 블록에서 이어짐
+    }
+    const result = await auth.signInWithPopup(provider);
+    await _manduFinishActivate(result.user);
+  } catch (e) {
+    console.error('만두 연결 실패:', e);
+    if (btn) { btn.disabled = false; btn.textContent = '💬 본인 비즈홈이신가요? 만두 연결하기 (1회)'; }
+    alert('연결 중 오류가 발생했어요.');
+  }
+}
+
+// 모바일 리다이렉트 로그인 복귀 처리
+(async function () {
+  if (!sessionStorage.getItem('_manduPendingSlug')) return;
+  const ready = await _manduWaitFirebase();
+  sessionStorage.removeItem('_manduPendingSlug');
+  if (!ready) return;
+  try {
+    const res = await firebase.auth().getRedirectResult();
+    if (res && res.user) await _manduFinishActivate(res.user);
+  } catch (e) { console.error(e); }
+})();
+</script>
 </body>
 </html>
