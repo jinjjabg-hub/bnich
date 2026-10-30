@@ -345,7 +345,10 @@ footer .slogan-footer { font-size: 11px; color: var(--muted-dark); letter-spacin
 .vmsg { display:none; padding: 12px; border-radius: 8px; font-size: 13px; font-weight: 700; margin-bottom: 12px; text-align:center; }
 .vmsg.ok { display:block; background:#e3f4e8; color:#1d6b35; }
 .vmsg.err { display:block; background:#fbe4e6; color:#8f1424; }
-.vpay { margin-top: 14px; padding-top: 14px; border-top: 1px dashed rgba(232,236,209,0.25); display:flex; flex-direction:column; gap:10px; }
+.fold-btn { width:100%; padding:14px; border-radius:12px; border:1px solid rgba(22,35,17,0.25); background:#fff; color:var(--text-light); font-size:14px; font-weight:700; cursor:pointer; font-family: 'Paperlogy', 'Noto Sans KR', sans-serif; }
+.fold-btn + #memberBox { margin-top: 14px; }
+#vform { margin-top: 0; }
+.vpay { margin-top: 16px; padding-top: 14px; border-top: 1px dashed rgba(232,236,209,0.25); display:flex; flex-direction:column; gap:10px; }
 .vpay-info { font-size: 12px; color: var(--muted-dark); line-height: 1.7; }
 .vpay-info b { display:block; font-size: 17px; color: #fff; letter-spacing: 0.5px; margin-top: 2px; }
 .vpay-info small { font-size: 12px; }
@@ -713,8 +716,11 @@ footer .slogan-footer { font-size: 11px; color: var(--muted-dark); letter-spacin
     <span data-lang="jp">1業種1名ずつ。タップするとそのメンバーのビズホーム・画像名刺が開きます。</span>
     <span data-lang="cn">每个行业一位成员。点击即可查看该成员的商务主页或图片名片。</span>
   </p>
-  <div class="member-list" id="memberList"></div>
-  <div class="member-more" id="memberMore"></div>
+  <button type="button" class="fold-btn" id="memberToggle" onclick="toggleMembers()"></button>
+  <div id="memberBox" style="display:none">
+    <div class="member-list" id="memberList"></div>
+    <div class="member-more" id="memberMore"></div>
+  </div>
 </section>
 
 <!-- VISIT : 참관 신청 → 담당자 이메일 -->
@@ -740,7 +746,8 @@ footer .slogan-footer { font-size: 11px; color: var(--muted-dark); letter-spacin
       <span data-lang="cn">✅ 参观费5万韩元 · 👔 商务着装 · 🪪 名片30张以上</span>
     </li>
   </ul>
-  <form class="vform" id="vform" novalidate>
+  <button type="button" class="btn btn-primary" id="openForm" onclick="openVisit()"></button>
+  <form class="vform" id="vform" novalidate style="display:none">
     <div class="vfg"><label><span data-lang="kr" class="active">성명(비지터)</span><span data-lang="en">Name (visitor)</span><span data-lang="jp">氏名（ビジター）</span><span data-lang="cn">姓名（访客）</span> *</label><input name="name"></div>
     <div class="vfg"><label><span data-lang="kr" class="active">회사명</span><span data-lang="en">Company</span><span data-lang="jp">会社名</span><span data-lang="cn">公司名称</span> *</label><input name="company"></div>
     <div class="vfg"><label><span data-lang="kr" class="active">직위</span><span data-lang="en">Position</span><span data-lang="jp">役職</span><span data-lang="cn">职位</span> *</label><input name="position"></div>
@@ -769,23 +776,24 @@ footer .slogan-footer { font-size: 11px; color: var(--muted-dark); letter-spacin
     </label>
     <div class="vmsg" id="vmsg"></div>
     <button class="btn btn-primary" id="vbtn" type="submit"></button>
-    <div class="vpay">
-      <div class="vpay-info">
-        <span data-lang="kr" class="active">💳 참관비 5만원 입금 계좌</span>
-        <span data-lang="en">💳 Visitor fee KRW 50,000 — bank account</span>
-        <span data-lang="jp">💳 見学費5万ウォン 振込口座</span>
-        <span data-lang="cn">💳 参观费5万韩元 汇款账户</span>
-        <b>카카오뱅크 79423640105</b>
-        <small>
-          <span data-lang="kr" class="active">예금주 정상현</span>
-          <span data-lang="en">Account holder: Jeong Sang-Hyun</span>
-          <span data-lang="jp">口座名義：チョン・サンヒョン</span>
-          <span data-lang="cn">户名：郑尚贤</span>
-        </small>
-      </div>
-      <button class="btn btn-secondary" type="button" id="copyAcct" onclick="copyAccount()"></button>
-    </div>
   </form>
+  <div class="vpay">
+    <div class="vpay-info">
+      <span data-lang="kr" class="active">💳 참관비 5만원 입금 계좌</span>
+      <span data-lang="en">💳 Visitor fee KRW 50,000 — bank account</span>
+      <span data-lang="jp">💳 見学費5万ウォン 振込口座</span>
+      <span data-lang="cn">💳 参观费5万韩元 汇款账户</span>
+      <b>카카오뱅크 79423640105</b>
+      <small>
+        <span data-lang="kr" class="active">예금주 정상현</span>
+        <span data-lang="en">Account holder: Jeong Sang-Hyun</span>
+        <span data-lang="jp">口座名義：チョン・サンヒョン</span>
+        <span data-lang="cn">户名：郑尚贤</span>
+      </small>
+    </div>
+    <button class="btn btn-secondary" type="button" id="copyAcct" onclick="copyAccount()"></button>
+  </div>
+
 </section>
 
 <!-- CONTACT -->
@@ -798,7 +806,7 @@ footer .slogan-footer { font-size: 11px; color: var(--muted-dark); letter-spacin
     <span data-lang="cn">交通指南</span>
   </div>
   <div class="contact-list">
-    <a class="contact-item" href="#visit">
+    <a class="contact-item" href="#visit" onclick="openVisit(); return true;">
       <div class="contact-icon">📋</div>
       <div class="contact-label">
         <span data-lang="kr" class="active">참관 신청</span>
@@ -1018,6 +1026,9 @@ const TX = {
   call:    {kr:'📞 전화하기', en:'📞 Call', jp:'📞 電話する', cn:'📞 拨打电话'},
   close:   {kr:'닫기', en:'Close', jp:'閉じる', cn:'关闭'},
   acct:    {kr:'📋 계좌번호 복사', en:'📋 Copy account number', jp:'📋 口座番号をコピー', cn:'📋 复制账号'},
+  mOpen:   {kr:'👥 멤버 업종 {n}개 보기 ▾', en:'👥 See all {n} member professions ▾', jp:'👥 メンバー{n}業種を見る ▾', cn:'👥 查看全部{n}个成员行业 ▾'},
+  mClose:  {kr:'접기 ▴', en:'Hide ▴', jp:'閉じる ▴', cn:'收起 ▴'},
+  open:    {kr:'📋 참관 신청하기', en:'📋 Request a visit', jp:'📋 見学を申し込む', cn:'📋 申请参观'},
   acctOk:  {kr:'✓ 복사됐어요 · 은행 앱에 붙여넣기', en:'✓ Copied — paste it in your bank app', jp:'✓ コピーしました · 銀行アプリに貼り付け', cn:'✓ 已复制 · 请粘贴到银行APP'},
 };
 const REQ = {
@@ -1036,6 +1047,19 @@ const PH = {
   career:   {kr:'예: 10년', en:'e.g. 10 years', jp:'例：10年', cn:'例：10年'},
 };
 
+function memberToggleText() {
+  const open = document.getElementById('memberBox').style.display !== 'none';
+  document.getElementById('memberToggle').textContent = open ? TX.mClose[CUR_LANG] : TX.mOpen[CUR_LANG].replace('{n}', MEMBERS.length);
+}
+function toggleMembers() {
+  const box = document.getElementById('memberBox');
+  box.style.display = box.style.display === 'none' ? '' : 'none';
+  memberToggleText();
+}
+function openVisit() {
+  document.getElementById('openForm').style.display = 'none';
+  document.getElementById('vform').style.display = '';
+}
 function renderMembers() {
   document.querySelectorAll('.memberCount').forEach(el => el.textContent = MEMBERS.length);
   const linked = MEMBERS.filter(m => m.home || m.card);
@@ -1079,6 +1103,8 @@ function applyLangExtras() {
   const btn = document.getElementById('vbtn');
   if (!btn.disabled) btn.textContent = TX.send[CUR_LANG];
   document.getElementById('copyAcct').textContent = TX.acct[CUR_LANG];
+  document.getElementById('openForm').textContent = TX.open[CUR_LANG];
+  memberToggleText();
   if (typeof renderVisitDates === 'function') renderVisitDates();
   document.documentElement.lang = {kr:'ko', en:'en', jp:'ja', cn:'zh'}[CUR_LANG];
 }
