@@ -354,6 +354,9 @@ footer .slogan-footer { font-size: 11px; color: var(--muted-dark); letter-spacin
 .vpay-info b { display:block; font-size: 17px; color: #fff; letter-spacing: 0.5px; margin-top: 2px; }
 .vpay-info small { font-size: 12px; }
 .vpay-link { text-decoration:none; display:flex; align-items:center; justify-content:center; }
+.sns-row { grid-column: 1 / -1; display:flex; justify-content:center; gap:22px; padding:6px 0; }
+.sns-link { display:block; line-height:0; border-radius:16px; }
+.sns-link:active { transform: scale(0.94); }
 /* 흰 바탕 섹션 위 카드는 연회색으로 구분 */
 .why-card, .ref-item, .contact-item, .member-item, .member-more, .fold-btn { background: var(--card); }
 .career-content { background: var(--card); }
@@ -887,16 +890,25 @@ footer .slogan-footer { font-size: 11px; color: var(--muted-dark); letter-spacin
         <span data-lang="cn">实时翻译聊天</span>
       </div>
     </a>
-    <a class="contact-item" href="https://www.instagram.com/bnibusan.pioneer/" target="_blank" rel="noopener">
-      <div class="contact-icon">📷</div>
-      <div class="contact-label">Instagram</div>
-      <div class="contact-value">@bnibusan.pioneer</div>
-    </a>
-    <a class="contact-item" href="https://www.youtube.com/@bnibusan.pioneer" target="_blank" rel="noopener">
-      <div class="contact-icon">▶️</div>
-      <div class="contact-label">YouTube</div>
-      <div class="contact-value">@bnibusan.pioneer</div>
-    </a>
+    <div class="sns-row">
+      <a class="sns-link" href="https://www.instagram.com/bnibusan.pioneer/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 64 64" width="56" height="56" aria-hidden="true">
+          <defs><radialGradient id="igGrad" cx="0.3" cy="1.07" r="1.2">
+            <stop offset="0" stop-color="#FFD776"/><stop offset="0.25" stop-color="#F3A554"/><stop offset="0.45" stop-color="#E1306C"/><stop offset="0.75" stop-color="#C13584"/><stop offset="1" stop-color="#5851DB"/>
+          </radialGradient></defs>
+          <rect width="64" height="64" rx="16" fill="url(#igGrad)"/>
+          <rect x="14" y="14" width="36" height="36" rx="11" fill="none" stroke="#fff" stroke-width="4.5"/>
+          <circle cx="32" cy="32" r="8.5" fill="none" stroke="#fff" stroke-width="4.5"/>
+          <circle cx="43" cy="21" r="2.8" fill="#fff"/>
+        </svg>
+      </a>
+      <a class="sns-link" href="https://www.youtube.com/@bnibusan.pioneer" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg viewBox="0 0 64 64" width="56" height="56" aria-hidden="true">
+          <rect width="64" height="64" rx="16" fill="#FF0000"/>
+          <path d="M26 22.5v19l16.5-9.5z" fill="#fff"/>
+        </svg>
+      </a>
+    </div>
     <a class="contact-item" style="grid-column: 1 / -1;" href="https://bnikorea.com/ko/" target="_blank" rel="noopener">
       <div class="contact-icon">🌐</div>
       <div class="contact-label">BNI Korea</div>
