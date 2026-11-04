@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
 <link rel="manifest" href="manifest.json">
 <meta name="apple-mobile-web-app-title" content="BNI 파이오니어">
-<meta name="theme-color" content="#162311">
+<meta name="theme-color" content="#141414">
 <title>BNI 파이오니어 챕터 | 부산 비즈니스 모임</title>
 <meta property="og:title" content="BNI 파이오니어 챕터 | 부산 비즈니스 모임">
 <meta property="og:description" content="친목이 아닌 비즈니스로. 업종별 1명, 매주 수요일 오전 6시 30분. 참관 신청 받습니다.">
@@ -28,17 +28,18 @@
 @font-face { font-family: 'Paperlogy'; src: url('../fonts/Paperlogy-7Bold.woff2') format('woff2'); font-weight: 600 900; font-display: swap; }
 
 :root {
-  --navy: #162311;
-  --navy2: #1d2d17;
-  --navy3: #26391f;
-  --gold: #BA0001;
-  --gold2: #d81a1b;
-  --sage: #E8ECD1;
-  --light: #E8ECD1;
-  --text-dark: #E8ECD1;
-  --text-light: #162311;
-  --muted-dark: #a7ae93;
-  --muted-light: #4d5a40;
+  --navy: #141414;
+  --navy2: #1c1c1c;
+  --navy3: #262626;
+  --gold: #C62020;
+  --gold2: #e03a3a;
+  --sage: #FFFFFF;
+  --light: #FFFFFF;
+  --card: #F4F4F4;
+  --text-dark: #FFFFFF;
+  --text-light: #141414;
+  --muted-dark: #a3a3a3;
+  --muted-light: #555555;
 }
 
 * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color: transparent; }
@@ -64,17 +65,17 @@ span[data-lang].active { display: inline; }
 nav {
   position: fixed; top:0; left:0; right:0; z-index:100;
   max-width: 480px; margin: 0 auto;
-  background: rgba(22,35,17,0.97);
+  background: rgba(20,20,20,0.97);
   backdrop-filter: blur(10px);
   padding: 10px 16px;
   display: flex; justify-content: space-between; align-items: center;
-  border-bottom: 1px solid rgba(232,236,209,0.25);
+  border-bottom: 1px solid rgba(255,255,255,0.25);
 }
 .nav-brand { font-size: 12px; font-weight: 700; color: var(--sage); white-space: nowrap; }
 .lang-btns { display:flex; gap:4px; }
 .lang-btn {
   padding: 5px 8px;
-  border: 1px solid rgba(232,236,209,0.35);
+  border: 1px solid rgba(255,255,255,0.35);
   background: transparent;
   color: var(--muted-dark);
   font-size: 10px; font-weight: 700;
@@ -84,7 +85,7 @@ nav {
   display: flex; align-items:center; justify-content:center;
   font-family: 'Paperlogy', 'Noto Sans KR', sans-serif;
 }
-.lang-btn.active { background: var(--gold); color: #fff; border-color: var(--gold); }
+.lang-btn.active { background: #FFFFFF; color: #141414; border-color: #FFFFFF; }
 
 /* ── HERO ── */
 .hero { margin-top: 54px; width: 100%; }
@@ -111,7 +112,7 @@ nav {
   background: var(--navy2);
   padding: 16px 20px;
   display: flex; align-items: center; gap:14px;
-  border-bottom: 1px solid rgba(232,236,209,0.12);
+  border-bottom: 1px solid rgba(255,255,255,0.12);
 }
 .profile-img {
   width: 64px; height: 64px; min-width:64px;
@@ -150,7 +151,7 @@ section { padding: 40px 20px; }
 .why-cards { display: flex; flex-direction: column; gap:14px; }
 .why-card {
   background: #fff;
-  border: 1px solid rgba(232,236,209,0.18);
+  border: 1px solid rgba(255,255,255,0.18);
   border-left: 4px solid var(--gold);
   border-radius: 10px; padding: 18px 16px;
 }
@@ -165,7 +166,7 @@ section { padding: 40px 20px; }
 .diff-grid { display: flex; flex-direction: column; gap:12px; }
 .diff-card {
   background: var(--navy3);
-  border: 1px solid rgba(232,236,209,0.12);
+  border: 1px solid rgba(255,255,255,0.12);
   border-radius: 10px; padding: 18px 16px;
 }
 .diff-card h3 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.4; }
@@ -228,12 +229,12 @@ section { padding: 40px 20px; }
 .portfolio-slide img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
 .portfolio-nav { display:flex; align-items:center; justify-content:center; gap:16px; margin-top:14px; }
 .portfolio-btn {
-  background: transparent; border: 1px solid rgba(232,236,209,0.35);
+  background: transparent; border: 1px solid rgba(255,255,255,0.35);
   color: var(--sage); width: 30px; height: 30px; border-radius: 50%;
   font-size: 15px; cursor: pointer; display:flex; align-items:center; justify-content:center;
 }
 .portfolio-dots { display:flex; gap:6px; }
-.portfolio-dot { width:6px; height:6px; border-radius:50%; background: rgba(232,236,209,0.3); transition: all 0.25s; }
+.portfolio-dot { width:6px; height:6px; border-radius:50%; background: rgba(255,255,255,0.3); transition: all 0.25s; }
 .portfolio-dot.active { background: var(--sage); width:18px; border-radius:3px; }
 
 /* ── CONTACT ── */
@@ -276,7 +277,7 @@ section { padding: 40px 20px; }
 }
 .btn-primary { background: var(--gold); color: #fff; }
 .btn-secondary { background: transparent; border: 2px solid var(--sage); color: var(--sage); }
-.btn-share { background: linear-gradient(135deg, #1a6b3a, #0d8a4a); color: #fff; border: none; }
+.btn-share { background: #FFFFFF; color: #141414; border: none; }
 .btn:active { transform: scale(0.97); opacity: 0.9; }
 
 /* 공유 바텀시트 */
@@ -299,13 +300,13 @@ section { padding: 40px 20px; }
 /* ── FOOTER ── */
 footer {
   background: var(--navy); padding: 24px 20px;
-  text-align: center; border-top: 1px solid rgba(232,236,209,0.12);
+  text-align: center; border-top: 1px solid rgba(255,255,255,0.12);
 }
 footer .company { font-size: 13px; font-weight: 700; color: var(--sage); margin-bottom: 5px; }
 footer .slogan-footer { font-size: 11px; color: var(--muted-dark); letter-spacing: 0.5px; }
 
 /* ── 챕터 비즈홈 추가 섹션 (갤러리 빈칸 · 멤버 · 참관 신청) ── */
-.portfolio-empty { aspect-ratio: 4/3; border: 1px dashed rgba(232,236,209,0.4); border-radius: 12px; display:flex; align-items:center; justify-content:center; color: var(--muted-dark); font-size: 13px; text-align:center; line-height:1.7; }
+.portfolio-empty { aspect-ratio: 4/3; border: 1px dashed rgba(255,255,255,0.4); border-radius: 12px; display:flex; align-items:center; justify-content:center; color: var(--muted-dark); font-size: 13px; text-align:center; line-height:1.7; }
 .difference .vs { font-size: 12px; color: var(--muted-dark); margin-bottom: 6px; text-decoration: line-through; opacity: .8; }
 .members { background: var(--light); }
 .members .section-label { color: var(--muted-light); }
@@ -318,9 +319,9 @@ footer .slogan-footer { font-size: 11px; color: var(--muted-dark); letter-spacin
 .member-co { font-size: 11px; color: #777; line-height: 1.4; }
 .member-links { display:flex; gap:4px; flex-shrink:0; }
 .member-links span { font-size: 11px; font-weight: 700; padding: 5px 10px; white-space: nowrap; border-radius: 12px; text-decoration:none; }
-.ml-home { background: var(--gold); color: #fff; box-shadow: 0 2px 8px rgba(186,0,1,0.3); }
-.ml-card { background: transparent; color: var(--muted-light); border: 1px solid rgba(22,35,17,0.25); }
-.card-pop { display:none; position:fixed; inset:0; z-index:300; background:rgba(10,16,8,0.88); align-items:center; justify-content:center; padding:16px; }
+.ml-home { background: var(--gold); color: #fff; box-shadow: 0 2px 8px rgba(198,32,32,0.3); }
+.ml-card { background: transparent; color: var(--muted-light); border: 1px solid rgba(20,20,20,0.25); }
+.card-pop { display:none; position:fixed; inset:0; z-index:300; background:rgba(10,10,10,0.88); align-items:center; justify-content:center; padding:16px; }
 .card-pop.on { display:flex; }
 .card-pop-box { width:100%; max-width:440px; display:flex; flex-direction:column; gap:12px; }
 .card-pop-box img { width:100%; max-height:72vh; object-fit:contain; border-radius:10px; background:#fff; }
@@ -331,12 +332,12 @@ footer .slogan-footer { font-size: 11px; color: var(--muted-dark); letter-spacin
 .visit { background: var(--navy2); }
 .visit .section-title { color: #fff; margin-bottom: 14px; }
 .visit-info { list-style:none; margin-bottom: 18px; }
-.visit-info li { font-size: 13px; line-height: 1.7; padding: 8px 0; border-bottom: 1px solid rgba(232,236,209,0.12); color: var(--text-dark); }
+.visit-info li { font-size: 13px; line-height: 1.7; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.12); color: var(--text-dark); }
 .visit-info li b { color: #fff; }
-.vform { background: var(--navy3); border: 1px solid rgba(232,236,209,0.2); border-radius: 12px; padding: 18px 16px; }
+.vform { background: var(--navy3); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 18px 16px; }
 .vfg { margin-bottom: 12px; }
 .vfg label { display:block; font-size: 12px; font-weight: 700; color: var(--sage); margin-bottom: 5px; }
-.vfg input, .vfg select { width:100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(232,236,209,0.25); background: var(--navy); color: #fff; font-size: 15px; font-family: 'Paperlogy', 'Noto Sans KR', sans-serif; }
+.vfg input, .vfg select { width:100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.25); background: var(--navy); color: #fff; font-size: 15px; font-family: 'Paperlogy', 'Noto Sans KR', sans-serif; }
 .vfg input::placeholder { color: rgba(240,236,224,0.35); }
 .vrate { display:flex; flex-wrap:wrap; gap:6px 12px; font-size: 13px; color: var(--text-dark); padding-top: 2px; }
 .vrate label { display:flex; align-items:center; gap:4px; font-weight:400; color: var(--text-dark); margin:0; font-size:13px; }
@@ -345,14 +346,30 @@ footer .slogan-footer { font-size: 11px; color: var(--muted-dark); letter-spacin
 .vmsg { display:none; padding: 12px; border-radius: 8px; font-size: 13px; font-weight: 700; margin-bottom: 12px; text-align:center; }
 .vmsg.ok { display:block; background:#e3f4e8; color:#1d6b35; }
 .vmsg.err { display:block; background:#fbe4e6; color:#8f1424; }
-.fold-btn { width:100%; padding:14px; border-radius:12px; border:1px solid rgba(22,35,17,0.25); background:#fff; color:var(--text-light); font-size:14px; font-weight:700; cursor:pointer; font-family: 'Paperlogy', 'Noto Sans KR', sans-serif; }
+.fold-btn { width:100%; padding:14px; border-radius:12px; border:1px solid rgba(20,20,20,0.25); background:#fff; color:var(--text-light); font-size:14px; font-weight:700; cursor:pointer; font-family: 'Paperlogy', 'Noto Sans KR', sans-serif; }
 .fold-btn + #memberBox { margin-top: 14px; }
 #vform { margin-top: 0; }
-.vpay { margin-top: 16px; padding-top: 14px; border-top: 1px dashed rgba(232,236,209,0.25); display:flex; flex-direction:column; gap:10px; }
+.vpay { margin-top: 16px; padding-top: 14px; border-top: 1px dashed rgba(255,255,255,0.25); display:flex; flex-direction:column; gap:10px; }
 .vpay-info { font-size: 12px; color: var(--muted-dark); line-height: 1.7; }
 .vpay-info b { display:block; font-size: 17px; color: #fff; letter-spacing: 0.5px; margin-top: 2px; }
 .vpay-info small { font-size: 12px; }
 .vpay-link { text-decoration:none; display:flex; align-items:center; justify-content:center; }
+/* 흰 바탕 섹션 위 카드는 연회색으로 구분 */
+.why-card, .ref-item, .contact-item, .member-item, .member-more, .fold-btn { background: var(--card); }
+.career-content { background: var(--card); }
+.why-card { border-left-color: var(--gold); }
+
+/* ── 상단 참관 신청 버튼 ── */
+.nav-right { display:flex; align-items:center; gap:6px; }
+.nav-visit { background: var(--gold); color:#fff; font-size: 11px; font-weight: 700; padding: 7px 10px; border-radius: 6px; text-decoration:none; white-space:nowrap; min-height:32px; display:flex; align-items:center; }
+@media (max-width: 380px) { .nav-brand { display:none; } nav { justify-content:flex-end; } }
+
+/* ── 챕터 실적 바 ── */
+.chapter-bar { background: var(--gold); color:#fff; padding: 26px 20px 22px; text-align:center; }
+.chapter-bar-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; opacity: .85; margin-bottom: 14px; }
+.chapter-stats { display:grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.chapter-stat b { display:block; font-size: 24px; font-weight: 800; line-height: 1.2; letter-spacing: -0.5px; }
+.chapter-stat > span { font-size: 11.5px; opacity: .9; }
 </style>
 </head>
 <body>
@@ -360,11 +377,19 @@ footer .slogan-footer { font-size: 11px; color: var(--muted-dark); letter-spacin
 <!-- NAV -->
 <nav>
   <div class="nav-brand">BNI PIONEER</div>
+  <div class="nav-right">
+  <a class="nav-visit" href="#visit" onclick="openVisit(); return true;">
+    <span data-lang="kr" class="active">참관 신청</span>
+    <span data-lang="en">Visit</span>
+    <span data-lang="jp">見学申込</span>
+    <span data-lang="cn">申请参观</span>
+  </a>
   <div class="lang-btns">
     <button class="lang-btn active" onclick="setLang('kr')">한국어</button>
     <button class="lang-btn" onclick="setLang('en')">EN</button>
     <button class="lang-btn" onclick="setLang('jp')">日本語</button>
     <button class="lang-btn" onclick="setLang('cn')">中文</button>
+  </div>
   </div>
 </nav>
 
@@ -473,6 +498,30 @@ footer .slogan-footer { font-size: 11px; color: var(--muted-dark); letter-spacin
     </div>
   </div>
 </section>
+
+<!-- CHAPTER BAR : 파이오니어 챕터 실적 (대표 제공 수치, 2026년 기준) -->
+<div class="chapter-bar">
+  <div class="chapter-bar-label">
+    <span data-lang="kr" class="active">PIONEER · 2026년 기준</span>
+    <span data-lang="en">PIONEER · AS OF 2026</span>
+    <span data-lang="jp">PIONEER · 2026年基準</span>
+    <span data-lang="cn">PIONEER · 截至2026年</span>
+  </div>
+  <div class="chapter-stats">
+    <div class="chapter-stat">
+      <b><span data-lang="kr" class="active">150억+</span><span data-lang="en">₩15B+</span><span data-lang="jp">150億+</span><span data-lang="cn">150亿+</span></b>
+      <span><span data-lang="kr" class="active">비즈니스 총액</span><span data-lang="en">Total business</span><span data-lang="jp">ビジネス総額</span><span data-lang="cn">业务总额（韩元）</span></span>
+    </div>
+    <div class="chapter-stat">
+      <b>10,000+</b>
+      <span><span data-lang="kr" class="active">리퍼럴 수</span><span data-lang="en">Referrals</span><span data-lang="jp">リファーラル数</span><span data-lang="cn">推荐次数</span></span>
+    </div>
+    <div class="chapter-stat">
+      <b>35+</b>
+      <span><span data-lang="kr" class="active">멤버</span><span data-lang="en">Members</span><span data-lang="jp">メンバー</span><span data-lang="cn">成员</span></span>
+    </div>
+  </div>
+</div>
 
 <!-- DIFFERENCE : 다른 사업자 모임과 무엇이 다른가 -->
 <section class="difference">
@@ -838,6 +887,16 @@ footer .slogan-footer { font-size: 11px; color: var(--muted-dark); letter-spacin
         <span data-lang="cn">实时翻译聊天</span>
       </div>
     </a>
+    <a class="contact-item" href="https://www.instagram.com/bnibusan.pioneer/" target="_blank" rel="noopener">
+      <div class="contact-icon">📷</div>
+      <div class="contact-label">Instagram</div>
+      <div class="contact-value">@bnibusan.pioneer</div>
+    </a>
+    <a class="contact-item" href="https://www.youtube.com/@bnibusan.pioneer" target="_blank" rel="noopener">
+      <div class="contact-icon">▶️</div>
+      <div class="contact-label">YouTube</div>
+      <div class="contact-value">@bnibusan.pioneer</div>
+    </a>
     <a class="contact-item" style="grid-column: 1 / -1;" href="https://bnikorea.com/ko/" target="_blank" rel="noopener">
       <div class="contact-icon">🌐</div>
       <div class="contact-label">BNI Korea</div>
@@ -906,7 +965,7 @@ footer .slogan-footer { font-size: 11px; color: var(--muted-dark); letter-spacin
         <div class="share-btn-icon" style="background:#e8e8e8;">🔗</div><span>Link</span>
       </button>
       <button class="share-btn" onclick="shareQR()">
-        <div class="share-btn-icon" style="background:#162311;">📱</div><span>QR</span>
+        <div class="share-btn-icon" style="background:#141414;">📱</div><span>QR</span>
       </button>
     </div>
     <button class="share-cancel" onclick="closeShare()">
@@ -921,7 +980,7 @@ footer .slogan-footer { font-size: 11px; color: var(--muted-dark); letter-spacin
 <!-- 만두 연결 (카드 주인 전용, 방문자는 무시해도 되는 위치) -->
 <div class="mandu-activate-wrap" style="padding:14px 20px 4px;text-align:center;">
   <button id="mandu-activate-btn" onclick="activateMandu()"
-    style="background:none;border:1px solid rgba(232,236,209,0.3);color:var(--muted-dark);font-size:10.5px;padding:7px 14px;border-radius:20px;cursor:pointer;font-family: 'Paperlogy', 'Noto Sans KR', sans-serif;">
+    style="background:none;border:1px solid rgba(255,255,255,0.3);color:var(--muted-dark);font-size:10.5px;padding:7px 14px;border-radius:20px;cursor:pointer;font-family: 'Paperlogy', 'Noto Sans KR', sans-serif;">
     💬 본인 비즈홈이신가요? 만두 연결하기 (1회)
   </button>
   <div id="mandu-activate-done" style="display:none;font-size:10.5px;color:var(--sage);padding:7px 0;">
@@ -976,7 +1035,7 @@ const MEMBERS = [
   { name:'송승훈', job:{kr:'앱 개발·웹 제작(비즈홈)', en:'App development & web design (Biz Home)', jp:'アプリ開発・Web制作（ビズホーム）', cn:'应用开发·网站制作（商务主页）'}, home:'https://jinjjabg-hub.github.io/BNI-PIONEER-cards/송승훈/' },
   { name:'이상호', job:{kr:'인테리어(숙박·병원·상가)', en:'Interiors (lodging, clinics, retail)', jp:'インテリア（宿泊・病院・商業施設）', cn:'室内装修（住宿·医院·商铺）'}, card:'cards/interior.jpg', tel:'010-8501-8612' },
   { name:'조현우', job:{kr:'고용지원금', en:'Employment subsidies', jp:'雇用助成金', cn:'雇佣补贴'}, card:'cards/subsidy.jpg', tel:'010-6590-0731' },
-  { name:'김근우', job:{kr:'인쇄·디자인', en:'Printing & design', jp:'印刷・デザイン', cn:'印刷·设计'}, card:'cards/printing.jpg', tel:'010-5664-5710' },
+  { name:'김근우', job:{kr:'인쇄·디자인', en:'Printing & design', jp:'印刷・デザイン', cn:'印刷·设计'}, home:'https://jinjjabg-hub.github.io/BNI-PIONEER-cards/김근우/' },
   { name:'김지현', job:{kr:'숙박업 컨설팅', en:'Lodging business consulting', jp:'宿泊業コンサルティング', cn:'住宿业咨询'}, home:'https://jinjjabg-hub.github.io/BNI-PIONEER-cards/김지현/' },
   { name:'김경태', job:{kr:'상조서비스', en:'Funeral services', jp:'葬儀サービス', cn:'殡葬服务'}, home:'https://jinjjabg-hub.github.io/BNI-PIONEER-cards/김경태/' },
   { name:'심학봉', job:{kr:'손해보험', en:'Property & casualty insurance', jp:'損害保険', cn:'财产保险'}, card:'cards/pc-insurance.jpg', tel:'010-5535-4004' },
