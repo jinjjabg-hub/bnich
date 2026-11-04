@@ -354,9 +354,14 @@ footer .slogan-footer { font-size: 11px; color: var(--muted-dark); letter-spacin
 .vpay-info b { display:block; font-size: 17px; color: #fff; letter-spacing: 0.5px; margin-top: 2px; }
 .vpay-info small { font-size: 12px; }
 .vpay-link { text-decoration:none; display:flex; align-items:center; justify-content:center; }
-.sns-row { grid-column: 1 / -1; display:flex; justify-content:center; gap:22px; padding:6px 0; }
-.sns-link { display:block; line-height:0; border-radius:16px; }
-.sns-link:active { transform: scale(0.94); }
+.link-row { display:flex; justify-content:center; flex-wrap:wrap; gap:16px; margin-bottom:16px; }
+.link-tile { display:block; line-height:0; border-radius:16px; overflow:hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.12); }
+.link-tile img { width:56px; height:56px; display:block; background:#fff; }
+.link-tile:active { transform: scale(0.94); }
+.addr-line { display:flex; align-items:center; gap:10px; background: var(--card); border-radius:12px; padding:12px 14px; text-decoration:none; }
+.addr-pin { font-size:18px; }
+.addr-text { flex:1; font-size:12.5px; font-weight:600; color: var(--text-light); line-height:1.5; }
+.addr-map { font-size:12px; font-weight:700; color: var(--gold); white-space:nowrap; }
 /* 흰 바탕 섹션 위 카드는 연회색으로 구분 */
 .why-card, .ref-item, .contact-item, .member-item, .member-more, .fold-btn { background: var(--card); }
 .career-content { background: var(--card); }
@@ -864,35 +869,14 @@ footer .slogan-footer { font-size: 11px; color: var(--muted-dark); letter-spacin
     <span data-lang="jp">アクセス</span>
     <span data-lang="cn">交通指南</span>
   </div>
-  <div class="contact-list">
-    <a class="contact-item" href="#visit" onclick="openVisit(); return true;">
-      <div class="contact-icon">📋</div>
-      <div class="contact-label">
-        <span data-lang="kr" class="active">참관 신청</span>
-        <span data-lang="en">Visit</span>
-        <span data-lang="jp">見学申し込み</span>
-        <span data-lang="cn">申请参观</span>
-      </div>
-      <div class="contact-value">
-        <span data-lang="kr" class="active">신청서 작성</span>
-        <span data-lang="en">Fill out the form</span>
-        <span data-lang="jp">申込書を記入</span>
-        <span data-lang="cn">填写申请表</span>
-      </div>
+  <!-- 링크는 로고만: 누르면 바로 이동. 새 링크도 같은 모양(.link-tile)으로 추가.
+       홈페이지는 집 아이콘, 블로그·스레드 등은 각 서비스 로고를 쓴다 -->
+  <div class="link-row">
+    <a class="link-tile" href="https://jinjjabg-hub.github.io/MANDU/?u=bni-pioneer" target="_blank" rel="noopener" aria-label="MANDU">
+      <img src="icon-mandu.png" alt="MANDU" width="56" height="56">
     </a>
-    <a class="contact-item" href="https://jinjjabg-hub.github.io/MANDU/?u=bni-pioneer" target="_blank">
-      <div class="contact-icon">💬</div>
-      <div class="contact-label">MANDU</div>
-      <div class="contact-value">
-        <span data-lang="kr" class="active">실시간 번역 메신저</span>
-        <span data-lang="en">Live translation chat</span>
-        <span data-lang="jp">リアルタイム翻訳チャット</span>
-        <span data-lang="cn">实时翻译聊天</span>
-      </div>
-    </a>
-    <div class="sns-row">
-      <a class="sns-link" href="https://www.instagram.com/bnibusan.pioneer/" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg viewBox="0 0 64 64" width="56" height="56" aria-hidden="true">
+    <a class="link-tile" href="https://www.instagram.com/bnibusan.pioneer/" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 64 64" width="56" height="56" aria-hidden="true">
           <defs><radialGradient id="igGrad" cx="0.3" cy="1.07" r="1.2">
             <stop offset="0" stop-color="#FFD776"/><stop offset="0.25" stop-color="#F3A554"/><stop offset="0.45" stop-color="#E1306C"/><stop offset="0.75" stop-color="#C13584"/><stop offset="1" stop-color="#5851DB"/>
           </radialGradient></defs>
@@ -901,40 +885,32 @@ footer .slogan-footer { font-size: 11px; color: var(--muted-dark); letter-spacin
           <circle cx="32" cy="32" r="8.5" fill="none" stroke="#fff" stroke-width="4.5"/>
           <circle cx="43" cy="21" r="2.8" fill="#fff"/>
         </svg>
-      </a>
-      <a class="sns-link" href="https://www.youtube.com/@bnibusan.pioneer" target="_blank" rel="noopener" aria-label="YouTube">
-        <svg viewBox="0 0 64 64" width="56" height="56" aria-hidden="true">
+    </a>
+    <a class="link-tile" href="https://www.youtube.com/@bnibusan.pioneer" target="_blank" rel="noopener" aria-label="YouTube">
+      <svg viewBox="0 0 64 64" width="56" height="56" aria-hidden="true">
           <rect width="64" height="64" rx="16" fill="#FF0000"/>
           <path d="M26 22.5v19l16.5-9.5z" fill="#fff"/>
         </svg>
-      </a>
-    </div>
-    <a class="contact-item" style="grid-column: 1 / -1;" href="https://bnikorea.com/ko/" target="_blank" rel="noopener">
-      <div class="contact-icon">🌐</div>
-      <div class="contact-label">BNI Korea</div>
-      <div class="contact-value">
-        <span data-lang="kr" class="active">BNI 코리아 공식 홈페이지</span>
-        <span data-lang="en">BNI Korea official website</span>
-        <span data-lang="jp">BNIコリア公式サイト</span>
-        <span data-lang="cn">BNI韩国官方网站</span>
-      </div>
     </a>
-    <a class="contact-item" style="grid-column: 1 / -1;" href="https://map.kakao.com/link/search/%EC%95%84%EB%B0%94%EB%8B%88%EC%84%BC%ED%8A%B8%EB%9F%B4%EB%B6%80%EC%82%B0" target="_blank">
-      <div class="contact-icon">📍</div>
-      <div class="contact-label">
-        <span data-lang="kr" class="active">미팅 장소 (탭하면 지도 열림)</span>
-        <span data-lang="en">Meeting venue (tap to open map)</span>
-        <span data-lang="jp">会場（タップで地図）</span>
-        <span data-lang="cn">会议地点（点击打开地图）</span>
-      </div>
-      <div class="contact-value">
-        <span data-lang="kr" class="active">부산광역시 남구 전포대로 133 아바니센트럴부산 3층</span>
-        <span data-lang="en">3F, Avani Central Busan, 133 Jeonpo-daero, Nam-gu, Busan</span>
-        <span data-lang="jp">釜山広域市 南区 田浦大路133 アヴァニ・セントラル釜山 3階</span>
-        <span data-lang="cn">釜山广域市南区田浦大路133号 Avani Central Busan 3楼</span>
-      </div>
+    <a class="link-tile" href="https://bnikorea.com/ko/" target="_blank" rel="noopener" aria-label="BNI Korea">
+      <img src="icon-bni.png" alt="BNI Korea" width="56" height="56">
     </a>
   </div>
+  <a class="addr-line" href="https://map.kakao.com/link/search/%EC%95%84%EB%B0%94%EB%8B%88%EC%84%BC%ED%8A%B8%EB%9F%B4%EB%B6%80%EC%82%B0" target="_blank" rel="noopener">
+    <span class="addr-pin">📍</span>
+    <span class="addr-text">
+      <span data-lang="kr" class="active">부산광역시 남구 전포대로 133 아바니센트럴부산 3층</span>
+      <span data-lang="en">3F, Avani Central Busan, 133 Jeonpo-daero, Nam-gu, Busan</span>
+      <span data-lang="jp">釜山広域市 南区 田浦大路133 アヴァニ・セントラル釜山 3階</span>
+      <span data-lang="cn">釜山广域市南区田浦大路133号 Avani Central Busan 3楼</span>
+    </span>
+    <span class="addr-map">
+      <span data-lang="kr" class="active">지도 ›</span>
+      <span data-lang="en">Map ›</span>
+      <span data-lang="jp">地図 ›</span>
+      <span data-lang="cn">地图 ›</span>
+    </span>
+  </a>
 </section>
 
 <!-- ACTION -->
